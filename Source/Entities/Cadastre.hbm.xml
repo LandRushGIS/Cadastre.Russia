@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+	assembly="Entities"
+	namespace="SouthTech.AgriculturalMonitoring.Cadastre"
+	schema="Cadastre">
+
+	<class name="LandRightType">
+		<id name="Code"></id>
+		<property name="Description" type="String" length="100"/>
+	</class>
+
+	<class name="LandEncumbranceType">
+		<id name="Code"></id>
+		<property name="Description" type="String" length="100"/>
+	</class>
+	
+	<class name="LandCategory">
+		<id name="Code"></id>
+		<property name="Description" type="String" length="100"/>
+	</class>
+
+	<class name="LandKind">
+		<id name="Id"></id>
+		<property name="Description" type="String" length="100"/>
+	</class>
+
+	<class name="LandUserRightType">
+		<id name="Id"></id>
+		<property name="Description" type="String" length="100"/>
+	</class>
+	
+	<class name="LandUtilizationKind">
+		<id name="Code"></id>
+		<property name="Description" type="String" length="512"/>
+	</class>
+
+	<class name="ParcelType">
+		<id name="Code"></id>
+		<property name="Description" type="String" length="512"/>
+	</class>
+	
+	<class name="ParcelState">
+		<id name="Code"></id>
+		<property name="Description" type="String" length="512"/>
+	</class>
+	
+	<class name="Region">
+		<id name="LocalNumber" access="field.camelcase" column="Number" type="Int32"></id>
+		<property name="Name" access="field.camelcase" column="Name" type="String" length="100"/>
+	</class>
+	
+	<class name="District">
+		<composite-id>
+			<key-many-to-one name="Region" access="field.camelcase" class="Region">
+				<column name="RegionNumber" />
+			</key-many-to-one>
+			<key-property name="LocalNumber" access="field.camelcase" column="Number" type="Int32" />
+		</composite-id>
+	</class>
+	
+	<class name="Block">
+		<composite-id>
+			<key-many-to-one name="District" access="field.camelcase" class="District">
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+			</key-many-to-one>
+			<key-property name="LocalNumber" access="field.camelcase" column="Number" type="Int32" />
+		</composite-id>
+		<property name="Name" />
+		<property name="Note" />
+		<property name="DocumentedArea" access="field.camelcase" type="Double" />
+		<property name="Geometry" not-null="false" />
+		<property name="Raster" not-null="false" />
+		<property name="RasterWorldFileData" column="RasterWorldFile" not-null="false" />
+	</class>
+	
+	<class name="Parcel" abstract="true">
+		<composite-id>
+			<key-many-to-one name="Block" access="field.camelcase" class="Block">
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+			</key-many-to-one>
+			<key-property name="LocalNumber" access="field.camelcase" column="Number" type="Int32" />
+		</composite-id>
+
+		<many-to-one name="Type" access="field.camelcase" class="ParcelType" column="TypeCode" />
+		<many-to-one name="State" class="ParcelState" column="StateCode" />
+		<property name="CreationDate" access="field.camelcase" type="DateTime" />
+		<property name="removingDate" access="field" column="RemovingDate" type="DateTime" not-null="false" />
+		<many-to-one name="LandCategory" class="LandCategory" column="LandCategoryCode" />
+		<component name="LandUtilization" class="LandUtilization" insert="true" update="true">
+			<many-to-one name="Kind" class="LandUtilizationKind" column="LandUtilizationKindCode" access="field.camelcase" />
+			<property name="Description" column="LandUtilizationDescription" type="string" access="field.camelcase" />
+		</component>
+		<property name="inventoryNumber" access="field" column="InventoryNumber" type="Int32" not-null="false" />
+		<property name="DocumentedArea" type="Double" />
+		<set name="Rights" cascade="all" lazy="false" fetch="subselect">
+			<key>
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+				<column name="ParcelNumber" />
+			</key>
+			<one-to-many class="ParcelRight" />
+		</set>
+		<set name="Encumbrances" cascade="all" lazy="false" fetch="subselect">
+			<key>
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+				<column name="ParcelNumber" />
+			</key>
+			<one-to-many class="ParcelEncumbrance" />
+		</set>
+		<map name="numberedLandPieces" table="ParcelLandPiece" cascade="all-delete-orphan" access="field" lazy="false" fetch="subselect" inverse="true">
+			<key>
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+				<column name="ParcelNumber" />
+			</key>
+			<index column="Number" type="Int32" />
+			<one-to-many class="ParcelLandPiece" />
+		</map>
+		<map name="numberedSubParcels" table="SubParcel" cascade="all-delete-orphan" access="field" lazy="false" fetch="subselect" inverse="true">
+			<key>
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+				<column name="ParcelNumber" />
+			</key>
+			<index column="Number" type="Int32" />
+			<one-to-many class="SubParcel" />
+		</map>
+
+		<joined-subclass name="SimpleParcel">
+			<key>
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+				<column name="Number" />
+			</key>
+		</joined-subclass>
+
+		<joined-subclass name="UnifiedLandUseChildParcel">
+			<key>
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+				<column name="Number" />
+			</key>
+			<property name="HasAnotherParentBlock" column="AnotherParentBlock" type="bool" />
+			<property name="ParentParcelLocalNumber" column="ParentParcelNumber" />
+		</joined-subclass>
+
+		<joined-subclass name="UnifiedLandUseParcel">
+			<key>
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+				<column name="Number" />
+			</key>
+		</joined-subclass>
+
+		<joined-subclass name="MulticontourParcel">
+			<key>
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+				<column name="Number" />
+			</key>
+			<map name="numberedContours" table="MulticontourParcelContour" cascade="all" access="field" lazy="false" fetch="subselect">
+				<key>
+					<column name="RegionNumber" />
+					<column name="DistrictNumber" />
+					<column name="BlockNumber" />
+					<column name="ParcelNumber" />
+				</key>
+				<index column="Number" type="Int32" />
+				<one-to-many class="MulticontourParcelContour" />
+			</map>
+		</joined-subclass>
+
+	</class>
+
+	<class name="MulticontourParcelContour">
+		<composite-id>
+			<key-many-to-one name="Parcel" class="MulticontourParcel" access="field.camelcase">
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+				<column name="ParcelNumber" />
+			</key-many-to-one>
+			<key-property name="LocalNumber" type="Int32" access="field.camelcase" column="Number" />
+		</composite-id>
+	</class>
+	
+	<class name="ParcelRight">
+		<composite-id>
+			<key-many-to-one name="Parcel" class="Parcel" access="field.camelcase">
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+				<column name="ParcelNumber" />
+			</key-many-to-one>
+			<key-property name="number" access="field" column="Number" type="Int32" />
+		</composite-id>
+		<many-to-one name="LandRightType" class="LandRightType" access="field.camelcase" lazy="proxy" fetch="select">
+			<column name="LandRightTypeCode" />
+		</many-to-one>
+		<property name="Name" type="String" access="field.camelcase" length="255" />
+	</class>
+
+	<class name="ParcelEncumbrance">
+		<composite-id>
+			<key-many-to-one name="Parcel" class="Parcel" access="field.camelcase">
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+				<column name="ParcelNumber" />
+			</key-many-to-one>
+			<key-property name="number" access="field" column="Number" type="Int32" />
+		</composite-id>
+		<many-to-one name="LandEncumbranceType" class="LandEncumbranceType" access="field.camelcase" lazy="proxy" fetch="select">
+			<column name="LandEncumbranceTypeCode" />
+		</many-to-one>
+		<property name="Name" type="String" access="field.camelcase" length="4000" />
+	</class>
+	
+	<class name="ParcelRightsCertificate">
+		<composite-id>
+			<key-property name="Series" column="Series" access="field.camelcase" />
+			<key-property name="Number" column="Number" access="field.camelcase" />
+		</composite-id>
+		<property name="Date" column="Date" not-null="false" access="field.camelcase" />
+		<property name="RegistrationRecordNumber" access="field.camelcase" type="string" />
+		<many-to-one name="Parcel" class="Parcel" access="field.camelcase">
+			<column name="RegionNumber" />
+			<column name="DistrictNumber" />
+			<column name="BlockNumber" />
+			<column name="ParcelNumber" />
+		</many-to-one>
+		<many-to-one name="Landholder" class="Landholder" access="field.camelcase" column="LandholderId" />
+	</class>
+
+	<class name="Landholder">
+		<id name="Id" access="field.camelcase" column="Id"></id>
+		<property name="Name" access="field.camelcase" column="Name" type="String" length="500"/>
+	</class>
+
+	<class name="SubParcel">
+		<composite-id>
+			<key-many-to-one name="Parcel" class="Parcel" access="field.camelcase">
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+				<column name="ParcelNumber" />
+			</key-many-to-one>
+			<key-property name="localNumber" access="field" column="Number" type="Int32" />
+		</composite-id>
+		<many-to-one name="State" access="field.camelcase" class="ParcelState" column="StateCode" />
+		<property name="landPieceNumber" access="field" column="LandPieceNumber" type="Int32" not-null="false" />
+		<set name="Encumbrances" cascade="all" lazy="false" fetch="subselect">
+			<key>
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+				<column name="ParcelNumber" />
+				<column name="SubParcelNumber" />
+			</key>
+			<one-to-many class="SubParcelEncumbrance" />
+		</set>
+	</class>
+
+	<class name="SubParcelEncumbrance">
+		<composite-id>
+			<key-many-to-one name="SubParcel" access="field.camelcase" class="SubParcel">
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+				<column name="ParcelNumber" />
+				<column name="SubParcelNumber" />
+			</key-many-to-one>
+			<key-property name="number" access="field" column="Number" type="Int32" />
+		</composite-id>
+		<many-to-one name="LandEncumbranceType" access="field.camelcase" class="LandEncumbranceType" lazy="proxy" fetch="select">
+			<column name="LandEncumbranceTypeCode" />
+		</many-to-one>
+		<property name="Name" access="field.camelcase" type="String" length="4000" />
+	</class>
+	
+	<class name="ParcelLandPiece">
+		<composite-id>
+			<key-many-to-one name="Parcel" access="field.camelcase" class="Parcel">
+				<column name="RegionNumber" />
+				<column name="DistrictNumber" />
+				<column name="BlockNumber" />
+				<column name="ParcelNumber" />
+			</key-many-to-one>
+			<key-property name="Number" access="field.camelcase" column="Number" type="Int32" />
+		</composite-id>
+		<property name="Geometry" access="field.camelcase" not-null="false">
+			<type name="NHibernate.Spatial.Type.GeometryType, NHibernate.Spatial">
+				<param name="srid">4326</param>
+				<param name="subtype">MULTIPOLYGON</param>
+			</type>
+		</property>
+		<property name="Address" type="String" />
+		<property name="assessedValue" access="field" column="AssessedValue" type="Double" not-null="false" />
+		<property name="bookValue" access="field" column="BookValue" type="Double" not-null="false" />
+		<many-to-one name="LandKind" class="LandKind" column="LandKindId" lazy="false" />
+		<many-to-one name="LandUserRightType" class="LandUserRightType" column="LandUserRightTypeId" lazy="false" />
+		<property name="leaseStartDate" access="field" column="LeaseStartDate" not-null="false" />
+		<property name="leaseEndDate" access="field" column="LeaseEndDate" not-null="false" />
+		<property name="Note" />
+	</class>
+</hibernate-mapping>
