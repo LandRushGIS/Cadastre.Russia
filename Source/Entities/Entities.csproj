@@ -12,10 +12,11 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
-    <BaseIntermediateOutputPath>..\..\Intermediate\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath Condition="$(BaseIntermediateOutputPath)==''">../../Intermediate/</BaseIntermediateOutputPath>
+    <BaseOutputPath Condition="$(BaseOutputPath)==''">../../Output/</BaseOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(Platform)\$(Configuration)\$(AssemblyName)\</IntermediateOutputPath>
-    <BaseOutputPath>..\..\Output\</BaseOutputPath>
     <OutputPath>$(BaseOutputPath)$(Platform)\$(Configuration)\</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <DownloadNuGetExe>true</DownloadNuGetExe>
