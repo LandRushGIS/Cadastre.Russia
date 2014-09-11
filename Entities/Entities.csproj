@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GeoAPI">
-      <HintPath>..\packages\GeoAPI.1.7.3\lib\net40-client\GeoAPI.dll</HintPath>
+      <HintPath>..\packages\GeoAPI.1.7.0\lib\net40-client\GeoAPI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
