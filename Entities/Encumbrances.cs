@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LandRush.Cadastre
+namespace LandRush.Cadastre.Russia
 {
 	/// <summary>
 	/// Тип ограничения (обременения) права на землю

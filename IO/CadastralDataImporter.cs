@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
-using BlockDTO = LandRush.Cadastre.DTO.Block;
-using ParcelDTO = LandRush.Cadastre.DTO.Parcel;
-using LandUtilizationDTO = LandRush.Cadastre.DTO.LandUtilization;
-using LandRightDTO = LandRush.Cadastre.DTO.LandRight;
-using LandEncumbranceDTO = LandRush.Cadastre.DTO.LandEncumbrance;
-using SubParcelDTO = LandRush.Cadastre.DTO.SubParcel;
-using LandRush.Cadastre;
+using BlockDTO = LandRush.Cadastre.Russia.DTO.Block;
+using ParcelDTO = LandRush.Cadastre.Russia.DTO.Parcel;
+using LandUtilizationDTO = LandRush.Cadastre.Russia.DTO.LandUtilization;
+using LandRightDTO = LandRush.Cadastre.Russia.DTO.LandRight;
+using LandEncumbranceDTO = LandRush.Cadastre.Russia.DTO.LandEncumbrance;
+using SubParcelDTO = LandRush.Cadastre.Russia.DTO.SubParcel;
 using GeoAPI.Geometries;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Algorithm;
 
-namespace SouthTech.AgriculturalMonitoring.GeoDataProviderClient
+namespace LandRush.Cadastre.Russia.IO
 {
 	public static class CadastralDataImporter
 	{

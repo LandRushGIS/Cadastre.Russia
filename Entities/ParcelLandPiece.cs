@@ -1,7 +1,7 @@
 ﻿using System;
 using IGeometry = GeoAPI.Geometries.IGeometry;
 
-namespace LandRush.Cadastre
+namespace LandRush.Cadastre.Russia
 {
 	/// <summary>
 	/// Вид земель (вид угодий)

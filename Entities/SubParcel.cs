@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LandRush.Cadastre
+namespace LandRush.Cadastre.Russia
 {
 	/// <summary>
 	/// Часть участка

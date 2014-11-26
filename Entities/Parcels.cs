@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LandRush.Cadastre
+namespace LandRush.Cadastre.Russia
 {
 	// Вид земельного участка
 	public class ParcelType : DomainValue

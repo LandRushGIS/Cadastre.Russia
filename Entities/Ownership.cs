@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LandRush.Cadastre
+namespace LandRush.Cadastre.Russia
 {
 	/// <summary>
 	/// Собственник/арендатор земли

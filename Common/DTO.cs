@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using IGeometry = GeoAPI.Geometries.IGeometry;
-using LandRush.Cadastre;
+using LandRush.Cadastre.Russia;
 
-namespace LandRush.Cadastre.DTO
+namespace LandRush.Cadastre.Russia.DTO
 {
 	//[DataContract]
 	public struct Block

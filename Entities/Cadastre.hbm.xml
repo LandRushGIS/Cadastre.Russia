@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
-	assembly="LandRush.Cadastre.Entities"
-	namespace="LandRush.Cadastre"
+	assembly="LandRush.Cadastre.Russia.Entities"
+	namespace="LandRush.Cadastre.Russia"
 	schema="Cadastre">
 
 	<class name="LandRightType">

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9BF32239-2034-46C7-B42D-4325125A2FDD}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>LandRush.Cadastre</RootNamespace>
-    <AssemblyName>LandRush.Cadastre.IO</AssemblyName>
+    <RootNamespace>LandRush.Cadastre.Russia</RootNamespace>
+    <AssemblyName>LandRush.Cadastre.Russia.IO</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
@@ -45,5 +45,5 @@
     </Reference>
     <Reference Include="System.XML" />
   </ItemGroup>
-  <Import Project="..\..\common.props" />
+  <Import Project="..\common.props" />
 </Project>

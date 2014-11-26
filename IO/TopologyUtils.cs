@@ -8,7 +8,7 @@ using NetTopologySuite;
 using NetTopologySuite.Algorithm;
 using NetTopologySuite.Geometries;
 
-namespace SouthTech.AgriculturalMonitoring.GeoDataProviderClient
+namespace LandRush.Cadastre.Russia.IO
 {
 	public static class TopologyUtils
 	{

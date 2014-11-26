@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LandRush.Cadastre
+namespace LandRush.Cadastre.Russia
 {
 	/// <summary>
 	/// Тип права на землю

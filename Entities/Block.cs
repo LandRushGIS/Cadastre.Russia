@@ -1,6 +1,6 @@
 ﻿using IGeometry = GeoAPI.Geometries.IGeometry;
 
-namespace LandRush.Cadastre
+namespace LandRush.Cadastre.Russia
 {
 	// Квартал
 	public class Block

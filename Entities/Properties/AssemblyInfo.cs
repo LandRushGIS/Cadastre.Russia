@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LandRush.Cadastre.Entities")]
-[assembly: AssemblyDescription("LandRush GIS Cadastre business component - entities")]
+[assembly: AssemblyTitle("LandRush.Cadastre.Russia.Entities")]
+[assembly: AssemblyDescription("LandRush GIS Cadastre.Russia business component - entities")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SouthTech")]
 [assembly: AssemblyProduct("LandRush")]
