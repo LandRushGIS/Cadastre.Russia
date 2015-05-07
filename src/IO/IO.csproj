@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+	<PropertyGroup>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		<ProjectGuid>{9BF32239-2034-46C7-B42D-4325125A2FDD}</ProjectGuid>
+		<OutputType>Library</OutputType>
+		<RootNamespace>LandRush.Cadastre.Russia</RootNamespace>
+		<AssemblyName>LandRush.Cadastre.Russia.IO</AssemblyName>
+		<TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+		<TargetFrameworkProfile>Client</TargetFrameworkProfile>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<BuildPackage>true</BuildPackage>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Include="**\*.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="packages.config" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Common\Common.csproj">
+			<Project>{0eed13af-ef1c-4e32-9a03-0270021d6c59}</Project>
+			<Name>Common</Name>
+		</ProjectReference>
+		<ProjectReference Include="..\Entities\Entities.csproj">
+			<Project>{f345542b-71f5-4d66-a0da-2e812b92a5d4}</Project>
+			<Name>Entities</Name>
+		</ProjectReference>
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="GeoAPI, Version=1.7.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+			<SpecificVersion>False</SpecificVersion>
+			<HintPath>..\..\packages\GeoAPI.1.7.0\lib\net40-client\GeoAPI.dll</HintPath>
+		</Reference>
+		<Reference Include="NetTopologySuite">
+			<HintPath>..\..\packages\NetTopologySuite.1.13.0\lib\net40-client\NetTopologySuite.dll</HintPath>
+		</Reference>
+		<Reference Include="PowerCollections">
+			<HintPath>..\..\packages\NetTopologySuite.1.13.0\lib\net40-client\PowerCollections.dll</HintPath>
+		</Reference>
+		<Reference Include="System.XML" />
+	</ItemGroup>
+	<Import Project="..\..\common.props" />
+</Project>
