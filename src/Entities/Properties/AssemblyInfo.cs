@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("LandRush.Cadastre.Russia.Entities")]
 [assembly: AssemblyDescription("LandRush GIS Cadastre.Russia business component - entities")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SouthTech")]
+[assembly: AssemblyCompany("Kaereshi")]
 [assembly: AssemblyProduct("LandRush")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCopyright("Copyright © 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
