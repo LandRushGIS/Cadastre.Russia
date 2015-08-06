@@ -37,10 +37,6 @@
 			{
 				return name;
 			}
-			//protected set
-			//{
-			//	name = value;
-			//}
 		}
 	}
 }

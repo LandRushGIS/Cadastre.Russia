@@ -4,14 +4,18 @@ using System.Linq;
 
 namespace LandRush.Cadastre.Russia
 {
-	// Вид земельного участка
+	/// <summary>
+	/// Вид земельного участка
+	/// </summary>
 	public class ParcelType : DomainValue
 	{
 		protected ParcelType() { }
 		public ParcelType(string code, string description) : base(code, description) { }
 	}
 
-	// Статус земельного участка
+	/// <summary>
+	/// Статус земельного участка
+	/// </summary>
 	public class ParcelState : DomainValue
 	{
 		protected ParcelState() { }

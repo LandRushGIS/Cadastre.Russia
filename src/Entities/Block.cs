@@ -105,50 +105,6 @@ namespace LandRush.Cadastre.Russia
 			}
 		}
 
-		public virtual bool HasRaster
-		{
-			get
-			{
-				return (Raster != null) && (RasterWorldFileData != null);
-			}
-		}
-
-		// Растр квартала
-		private byte[] raster;
-		public virtual byte[] Raster
-		{
-			get
-			{
-				return raster;
-			}
-			set
-			{
-				raster = value;
-			}
-		}
-
-		// World file
-		private string rasterWorldFileData;
-		protected virtual string RasterWorldFileData
-		{
-			get
-			{
-				return rasterWorldFileData;
-			}
-			set
-			{
-				rasterWorldFileData = value;
-			}
-		}
-
-		public virtual string[] RasterWorldFileLines
-		{
-			get
-			{
-				return rasterWorldFileData.Replace("\r\n", "\n").Split('\n');
-			}
-		}
-
 		////// Коэффициенты кадастровой стоимости для участков в данном квартале (по категориям земель)
 		////private IDictionary<LandCategory, double> cadastralValueFactors;
 		////public virtual IDictionary<LandCategory, double> CadastralValueFactors
