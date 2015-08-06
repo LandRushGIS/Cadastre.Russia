@@ -5,7 +5,6 @@ using LandRush.Cadastre.Russia;
 
 namespace LandRush.Cadastre.Russia.DTO
 {
-	//[DataContract]
 	public struct Block
 	{
 		public Block(string number, double cadastralValueFactor)
@@ -14,13 +13,10 @@ namespace LandRush.Cadastre.Russia.DTO
 			this.CadastralValueFactor = cadastralValueFactor;
 		}
 
-		//[DataMember]
 		public string Number;
-		//[DataMember]
 		public double CadastralValueFactor;
 	}
 
-	//[DataContract]
 	public struct Parcel
 	{
 		public Parcel(ParcelNumber number, DateTime creationDate, IGeometry geometry, string typeCode, string stateCode, string landholder, string note, double documentedArea, double assessedValue, double cadastralValue, string address, string landCategoryCode, LandUtilization landUtilization, IList<LandRight> rights, IList<LandEncumbrance> encumbrances, IList<SubParcel> subParcels, bool? hasAnotherParentBlock, int? parentParcelSubnumber)
@@ -45,41 +41,23 @@ namespace LandRush.Cadastre.Russia.DTO
 			this.ParentParcelLocalNumber = parentParcelSubnumber;
 		}
 
-		//[DataMember]
 		public ParcelNumber Number;
-		//[DataMember]
 		public DateTime CreationDate;
-		//[DataMember]
 		public IGeometry Geometry;
-		//[DataMember]
 		public string TypeCode;
-		//[DataMember]
 		public string StateCode;
-		//[DataMember]
 		public string Landholder;
-		//[DataMember]
 		public string Note;
-		//[DataMember]
 		public double DocumentedArea;
-		//[DataMember]
 		public double AssessedValue;
-		//[DataMember]
 		public double CadastralValue;
-		//[DataMember]
 		public string Address;
-		//[DataMember]
 		public string LandCategoryCode;
-		//[DataMember]
 		public LandUtilization LandUtilization;
-		//[DataMember]
 		public IList<LandRight> Rights;
-		//[DataMember]
 		public IList<LandEncumbrance> Encumbrances;
-		//[DataMember]
 		public IList<SubParcel> SubParcels;
-		//[DataMember]
 		public bool? HasAnotherParentBlock;
-		//[DataMember]
 		public int? ParentParcelLocalNumber;
 
 		public override string ToString()
@@ -88,7 +66,6 @@ namespace LandRush.Cadastre.Russia.DTO
 		}
 	}
 
-	//[DataContract]
 	public struct SubParcel
 	{
 		public SubParcel(int number, string stateCode, IList<LandEncumbrance> encumbrances)
@@ -98,15 +75,11 @@ namespace LandRush.Cadastre.Russia.DTO
 			this.Encumbrances = encumbrances;
 		}
 
-		//[DataMember]
 		public int Number;
-		//[DataMember]
 		public string StateCode;
-		//[DataMember]
 		public IList<LandEncumbrance> Encumbrances;
 	}
 
-	//[DataContract]
 	public struct LandRight
 	{
 		public LandRight(string landRightTypeCode, string name)
@@ -115,14 +88,10 @@ namespace LandRush.Cadastre.Russia.DTO
 			this.Name = name;
 		}
 
-		//[DataMember]
 		public string LandRightTypeCode;
-
-		//[DataMember]
 		public string Name;
 	}
 
-	//[DataContract]
 	public struct LandEncumbrance
 	{
 		public LandEncumbrance(string landEncumbranceTypeCode, string name)
@@ -131,14 +100,10 @@ namespace LandRush.Cadastre.Russia.DTO
 			this.Name = name;
 		}
 
-		//[DataMember]
 		public string LandEncumbranceTypeCode;
-
-		//[DataMember]
 		public string Name;
 	}
 
-	//[DataContract]
 	public struct LandUtilization
 	{
 		public LandUtilization(string kindCode, string description)
@@ -147,9 +112,7 @@ namespace LandRush.Cadastre.Russia.DTO
 			this.Description = description;
 		}
 
-		//[DataMember]
 		public string KindCode;
-		//[DataMember]
 		public string Description;
 	}
 }
