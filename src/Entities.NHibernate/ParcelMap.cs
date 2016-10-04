@@ -34,8 +34,6 @@ namespace LandRush.Cadastre.Russia.NHibernate
 				.Column("LandCategoryCode");
 			Component(x => x.LandUtilization)
 				.ColumnPrefix("LandUtilization");
-			Map(x => x.InventoryNumber)
-				.Access.CamelCaseField();
 			Map(x => x.DocumentedArea);
 			HasMany(x => x.Rights)
 				.KeyColumns.Add("RegionNumber", "DistrictNumber", "BlockNumber", "ParcelNumber")

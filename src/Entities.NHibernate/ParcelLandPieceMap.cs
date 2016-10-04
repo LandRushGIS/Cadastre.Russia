@@ -28,18 +28,6 @@ namespace LandRush.Cadastre.Russia.NHibernate
 			Map(x => x.Address);
 			Map(x => x.AssessedValue)
 				.Access.CamelCaseField();
-			Map(x => x.BookValue)
-				.Access.CamelCaseField();
-			References(x => x.LandKind)
-				.Column("LandKindId")
-				.Not.LazyLoad();
-			References(x => x.LandUserRightType)
-				.Column("LandUserRightTypeId")
-				.Not.LazyLoad();
-			Map(x => x.LeaseStartDate)
-				.Access.CamelCaseField();
-			Map(x => x.LeaseEndDate)
-				.Access.CamelCaseField();
 			Map(x => x.Note);
 		}
 	}

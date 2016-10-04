@@ -186,33 +186,6 @@ namespace LandRush.Cadastre.Russia
 			}
 		}
 
-		// Инвентарный номер участка
-		private int? inventoryNumber;
-		public virtual bool HasInventoryNumber
-		{
-			get
-			{
-				return inventoryNumber.HasValue;
-			}
-		}
-
-		public virtual void UnsetInventoryNumber()
-		{
-			inventoryNumber = null;
-		}
-
-		public virtual int InventoryNumber
-		{
-			get
-			{
-				return inventoryNumber.Value;
-			}
-			set
-			{
-				inventoryNumber = value;
-			}
-		}
-
 		// Документированная площадь участка
 		private double documentedArea;
 		public virtual double DocumentedArea
