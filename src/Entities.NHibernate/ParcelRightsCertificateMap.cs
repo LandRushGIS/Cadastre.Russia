@@ -23,11 +23,9 @@ namespace LandRush.Cadastre.Russia.NHibernate
 			Map(x => x.Date)
 				.Nullable();
 			Map(x => x.RegistrationRecordNumber);
-			References(x => x.Parcel)
+			References(x => x.Right)
 				.Access.CamelCaseField()
-				.Columns("RegionNumber", "DistrictNumber", "BlockNumber", "ParcelNumber");
-			References(x => x.Landholder)
-				.Column("LandholderId");
+				.Columns("RegionNumber", "DistrictNumber", "BlockNumber", "ParcelNumber", "RightNumber");
 		}
 	}
 }

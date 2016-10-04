@@ -41,13 +41,12 @@ namespace LandRush.Cadastre.Russia
 	{
 		protected ParcelRightsCertificate() { }
 
-		public ParcelRightsCertificate(string series, string number, DateTime date, Parcel parcel, Landholder landholder, string registrationRecordNumber)
+		public ParcelRightsCertificate(string series, string number, DateTime date, ParcelRight right, string registrationRecordNumber)
 		{
 			this.series = series;
 			this.number = number;
 			this.date = date;
-			this.parcel = parcel;
-			this.landholder = landholder;
+			this.right = right;
 			this.registrationRecordNumber = registrationRecordNumber;
 		}
 
@@ -55,8 +54,7 @@ namespace LandRush.Cadastre.Russia
 		private string number;
 		private DateTime date;
 		private string registrationRecordNumber;
-		private Parcel parcel;
-		private Landholder landholder;
+		private ParcelRight right;
 
 		public virtual string Series { get { return series; } }
 		public virtual string Number { get { return number; } }
@@ -70,12 +68,7 @@ namespace LandRush.Cadastre.Russia
 			get { return registrationRecordNumber; }
 			set { registrationRecordNumber = value; }
 		}
-		public virtual Parcel Parcel { get { return parcel; } }
-		public virtual Landholder Landholder
-		{
-			get { return landholder; }
-			set { landholder = value; }
-		}
+		public virtual ParcelRight Right { get { return right; } }
 
 		public override bool Equals(object obj)
 		{

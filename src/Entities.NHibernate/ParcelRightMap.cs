@@ -30,6 +30,11 @@ namespace LandRush.Cadastre.Russia.NHibernate
 				.Access.CamelCaseField()
 				.Column("Name")
 				.Length(255);
+			References(x => x.Landholder)
+				.Column("LandholderId");
+			Map(x => x.Share)
+				.Access.CamelCaseField()
+				.Column("Share");
 		}
 	}
 }

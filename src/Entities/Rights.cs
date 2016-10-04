@@ -18,12 +18,14 @@ namespace LandRush.Cadastre.Russia
 	{
 		protected ParcelRight() { }
 
-		public ParcelRight(Parcel parcel, int number, LandRightType landRightType, string name)
+		public ParcelRight(Parcel parcel, int number, LandRightType landRightType, string name, Landholder landholder, decimal share)
 		{
 			this.parcel = parcel;
 			this.number = number;
 			this.landRightType = landRightType;
 			this.name = name;
+			this.landholder = landholder;
+			this.share = share;
 		}
 
 		private int number;
@@ -44,6 +46,20 @@ namespace LandRush.Cadastre.Russia
 			{
 				return name;
 			}
+		}
+
+		private Landholder landholder;
+		public virtual Landholder Landholder
+		{
+			get { return landholder; }
+			set { landholder = value; }
+		}
+
+		private decimal share;
+		public virtual decimal Share
+		{
+			get { return share; }
+			set { share = value; }
 		}
 
 		private Parcel parcel;
