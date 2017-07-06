@@ -1,39 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<ProjectGuid>{9BF32239-2034-46C7-B42D-4325125A2FDD}</ProjectGuid>
-		<OutputType>Library</OutputType>
+		<!--<TargetFramework>netstandard1.4</TargetFramework>-->
+		<TargetFramework>net4.0</TargetFramework>
 		<RootNamespace>LandRush.Cadastre.Russia</RootNamespace>
 		<AssemblyName>LandRush.Cadastre.Russia.IO</AssemblyName>
+		<Description>LandRush GIS Cadastre.Russia business component - I/O capabilities</Description>
 	</PropertyGroup>
 	<ItemGroup>
-		<Compile Include="**\*.cs" />
-	</ItemGroup>
-	<ItemGroup>
-		<None Include="packages.config" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\Common\Common.csproj">
-			<Project>{0eed13af-ef1c-4e32-9a03-0270021d6c59}</Project>
-			<Name>Common</Name>
-		</ProjectReference>
-		<ProjectReference Include="..\Entities\Entities.csproj">
-			<Project>{f345542b-71f5-4d66-a0da-2e812b92a5d4}</Project>
-			<Name>Entities</Name>
-		</ProjectReference>
-	</ItemGroup>
-	<ItemGroup>
-		<Reference Include="System.XML" />
-		<Reference Include="GeoAPI">
-			<HintPath>..\..\packages\GeoAPI.1.7.3\lib\net40-client\GeoAPI.dll</HintPath>
-		</Reference>
-		<Reference Include="NetTopologySuite">
-			<HintPath>..\..\packages\NetTopologySuite.1.13.3.2\lib\net40-client\NetTopologySuite.dll</HintPath>
-		</Reference>
-		<Reference Include="PowerCollections">
-			<HintPath>..\..\packages\NetTopologySuite.1.13.3.2\lib\net40-client\PowerCollections.dll</HintPath>
-		</Reference>
+		<PackageReference Include="NetTopologySuite" Version="1.15.0-pre2" />
+		<ProjectReference Include="..\Common\Common.csproj" />
+		<ProjectReference Include="..\Entities\Entities.csproj" />
 	</ItemGroup>
 	<Import Project="..\..\common.props" />
 </Project>
