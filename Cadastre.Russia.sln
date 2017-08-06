@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "src\Common\Common.csproj", "{0EED13AF-EF1C-4E32-9A03-0270021D6C59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "src\Common\Common.csproj", "{0EED13AF-EF1C-4E32-9A03-0270021D6C59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "src\Entities\Entities.csproj", "{F345542B-71F5-4D66-A0DA-2E812B92A5D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "src\Entities\Entities.csproj", "{F345542B-71F5-4D66-A0DA-2E812B92A5D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities.NHibernate", "src\Entities.NHibernate\Entities.NHibernate.csproj", "{879EF55E-7E84-4ABC-AE1C-F9462B783F59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities.NHibernate", "src\Entities.NHibernate\Entities.NHibernate.csproj", "{879EF55E-7E84-4ABC-AE1C-F9462B783F59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO", "src\IO\IO.csproj", "{9BF32239-2034-46C7-B42D-4325125A2FDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IO", "src\IO\IO.csproj", "{9BF32239-2034-46C7-B42D-4325125A2FDD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "src\Database\Database.csproj", "{6493EC05-101A-4964-870D-5B4CBD0718F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{9BF32239-2034-46C7-B42D-4325125A2FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BF32239-2034-46C7-B42D-4325125A2FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BF32239-2034-46C7-B42D-4325125A2FDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6493EC05-101A-4964-870D-5B4CBD0718F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6493EC05-101A-4964-870D-5B4CBD0718F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6493EC05-101A-4964-870D-5B4CBD0718F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6493EC05-101A-4964-870D-5B4CBD0718F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
