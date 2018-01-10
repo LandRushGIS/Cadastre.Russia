@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using IGeometry = GeoAPI.Geometries.IGeometry;
 using LandRush.Cadastre.Russia;

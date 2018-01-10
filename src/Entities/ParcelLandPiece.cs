@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using IGeometry = GeoAPI.Geometries.IGeometry;
 
 namespace LandRush.Cadastre.Russia

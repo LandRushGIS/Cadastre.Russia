@@ -1,4 +1,4 @@
-﻿namespace LandRush.Cadastre.Russia
+namespace LandRush.Cadastre.Russia
 {
 	/// <summary>
 	/// Вид использования земель

@@ -1,4 +1,4 @@
-﻿using FluentNHibernate.Mapping;
+using FluentNHibernate.Mapping;
 using NHSpatial = NHibernate.Spatial;
 
 namespace LandRush.Cadastre.Russia.NHibernate

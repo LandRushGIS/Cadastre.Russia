@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -360,7 +360,7 @@ namespace LandRush.Cadastre.Russia.IO
 			//    outerRing = ReadSpatialElement(xmlReader);
 			//}
 			//else return null; // !
-			
+
 			//// Read inner polygon rings, if exist
 			//if (xmlReader.IsStartElement("Spatial_Element"))
 			//{

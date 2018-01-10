@@ -1,4 +1,4 @@
-﻿using FluentNHibernate;
+using FluentNHibernate;
 using FluentNHibernate.Mapping;
 
 namespace LandRush.Cadastre.Russia.NHibernate
