@@ -3,35 +3,65 @@
 namespace LandRush.Cadastre.Russia
 {
 	/// <summary>
-	/// Собственник/арендатор земли
+	/// Собственник
 	/// </summary>
-	public class Landholder
+	public abstract class Landholder
 	{
+		private int id;
+
 		protected Landholder() { }
 
-		public Landholder(int id, string name)
+		public Landholder(int id)
 		{
 			this.id = id;
-			this.name = name;
 		}
 
-		private int id;
-		public virtual int Id
+		/// <summary xml:lang="ru">
+		/// Внутренний идентификатор
+		/// </summary>
+		public virtual int Id => this.id;
+
+		/// <summary xml:lang="ru">
+		/// Имя / название
+		/// </summary>
+		public abstract string Name { get; }
+	}
+
+	/// <summary>
+	/// Собственник - физическое лицо
+	/// </summary>
+	public class PersonLandholder : Landholder
+	{
+		private Person person;
+
+		protected PersonLandholder() { }
+
+		public PersonLandholder(int id, Person person) : base(id)
 		{
-			get
-			{
-				return id;
-			}
+			this.person = person ?? throw new ArgumentNullException(nameof(person));
 		}
 
+		public override string Name =>
+			$"{person.FamilyName} {person.FirstName} {person.Patronymic}";
+
+		public virtual Person Person => this.person;
+	}
+
+	/// <summary>
+	/// Собственник - организация
+	/// </summary>
+	public class OrganizationLandholder : Landholder
+	{
 		private string name;
-		public virtual string Name
+
+		protected OrganizationLandholder() { }
+
+		public OrganizationLandholder(int id, string name) : base(id)
 		{
-			get
-			{
-				return name;
-			}
+			this.name = name ?? throw new ArgumentNullException(nameof(name));
 		}
+
+		public override string Name => this.name;
 	}
 
 	/// <summary>

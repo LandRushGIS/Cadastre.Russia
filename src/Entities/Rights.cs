@@ -16,59 +16,72 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public class ParcelRight : IComparable<ParcelRight>
 	{
+		private Parcel parcel;
+		private int number;
+		private LandRightType landRightType;
+		private string name;
+		private Landholder landholder;
+		private short shareNumerator;
+		private short shareDenominator;
+		private string shareText;
+		private string description;
+
 		protected ParcelRight() { }
 
-		public ParcelRight(Parcel parcel, int number, LandRightType landRightType, string name, Landholder landholder, decimal share)
+		public ParcelRight(
+			Parcel parcel,
+			int number,
+			LandRightType landRightType,
+			string name,
+			Landholder landholder,
+			short shareNumerator,
+			short shareDenominator)
 		{
 			this.parcel = parcel;
 			this.number = number;
 			this.landRightType = landRightType;
 			this.name = name;
 			this.landholder = landholder;
-			this.share = share;
+			this.shareNumerator = shareNumerator;
+			this.shareDenominator = shareDenominator;
 		}
 
-		private int number;
+		public virtual Parcel Parcel => this.parcel;
 
-		private LandRightType landRightType;
-		public virtual LandRightType LandRightType
-		{
-			get
-			{
-				return landRightType;
-			}
-		}
+		public virtual int Number => this.number;
 
-		private string name;
-		public virtual string Name
-		{
-			get
-			{
-				return name;
-			}
-		}
+		public virtual LandRightType LandRightType => this.landRightType;
 
-		private Landholder landholder;
+		public virtual string Name => this.name;
+
 		public virtual Landholder Landholder
 		{
-			get { return landholder; }
-			set { landholder = value; }
+			get { return this.landholder; }
+			set { this.landholder = value; }
 		}
 
-		private decimal share;
-		public virtual decimal Share
+		public virtual short ShareNumerator
 		{
-			get { return share; }
-			set { share = value; }
+			get { return this.shareNumerator; }
+			set { this.shareNumerator = value; }
 		}
 
-		private Parcel parcel;
-		public virtual Parcel Parcel
+		public virtual short ShareDenominator
 		{
-			get
-			{
-				return parcel;
-			}
+			get { return this.shareDenominator; }
+			set { this.shareDenominator = value; }
+		}
+
+		public virtual string ShareText
+		{
+			get { return this.shareText; }
+			set { this.shareText = value; }
+		}
+
+		public virtual string Description
+		{
+			get { return this.description; }
+			set { this.description = value; }
 		}
 
 		public override bool Equals(object obj)
@@ -79,7 +92,7 @@ namespace LandRush.Cadastre.Russia
 
 		public override int GetHashCode()
 		{
-			return this.parcel.GetHashCode() ^ (int)this.number.GetHashCode();
+			return this.parcel.GetHashCode() ^ this.number.GetHashCode();
 		}
 
 		public virtual int CompareTo(ParcelRight other)
@@ -90,7 +103,7 @@ namespace LandRush.Cadastre.Russia
 		// !!
 		public override string ToString()
 		{
-			return name + " (" + landRightType.Description + ")";
+			return this.name + " (" + this.landRightType.Description + ")";
 		}
 	}
 }

@@ -10,7 +10,6 @@
 	<ItemGroup>
 		<PackageReference Include="NetTopologySuite" Version="1.15.0-pre2" />
 		<ProjectReference Include="..\Common\Common.csproj" />
-		<ProjectReference Include="..\Entities\Entities.csproj" />
 	</ItemGroup>
 	<Import Project="..\..\common.props" />
 </Project>

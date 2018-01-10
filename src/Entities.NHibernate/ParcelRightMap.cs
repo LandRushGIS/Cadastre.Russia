@@ -14,7 +14,7 @@ namespace LandRush.Cadastre.Russia.NHibernate
 				.KeyReference(
 					x => x.Parcel,
 					m => m
-						.Access.CamelCaseField(),
+						.Access.CamelCaseField().Not.Lazy(),
 						"RegionNumber", "DistrictNumber", "BlockNumber", "ParcelNumber")
 				.KeyProperty(
 					Reveal.Member<ParcelRight>("number"),
@@ -32,9 +32,18 @@ namespace LandRush.Cadastre.Russia.NHibernate
 				.Length(255);
 			References(x => x.Landholder)
 				.Column("LandholderId");
-			Map(x => x.Share)
+			Map(x => x.ShareNumerator)
 				.Access.CamelCaseField()
-				.Column("Share");
+				.Column("ShareNumerator");
+			Map(x => x.ShareDenominator)
+				.Access.CamelCaseField()
+				.Column("ShareDenominator");
+			Map(x => x.ShareText)
+				.Access.CamelCaseField()
+				.Column("ShareText");
+			Map(x => x.Description)
+				.Access.CamelCaseField()
+				.Column("Description");
 		}
 	}
 }

@@ -37,13 +37,14 @@ namespace LandRush.Cadastre.Russia.NHibernate
 			Map(x => x.DocumentedArea);
 			HasMany(x => x.Rights)
 				.KeyColumns.Add("RegionNumber", "DistrictNumber", "BlockNumber", "ParcelNumber")
-				.Cascade.All()
+				.Inverse()
+				.Cascade.AllDeleteOrphan()
 				.Not.LazyLoad()
 				.Fetch.Subselect()
 				.AsSet();
 			HasMany(x => x.Encumbrances)
 				.KeyColumns.Add("RegionNumber", "DistrictNumber", "BlockNumber", "ParcelNumber")
-				.Cascade.All()
+				.Cascade.AllDeleteOrphan()
 				.Not.LazyLoad()
 				.Fetch.Subselect()
 				.AsSet();
