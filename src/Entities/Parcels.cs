@@ -33,13 +33,8 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		private static IDictionary<Type, ParcelType> types;
-		public static IDictionary<Type, ParcelType> Types
-		{
-			get
-			{
-				return types;
-			}
-		}
+		public static IDictionary<Type, ParcelType> Types =>
+			types;
 		//
 
 		protected Parcel() : this(null, 0, default(DateTime)) { }
@@ -58,221 +53,113 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		private Block block;
-		public virtual Block Block
-		{
-			get
-			{
-				return this.block;
-			}
-		}
+		public virtual Block Block =>
+			this.block;
 
 		private int localNumber;
-		public virtual int LocalNumber
-		{
-			get
-			{
-				return this.localNumber;
-			}
-		}
+		public virtual int LocalNumber =>
+			this.localNumber;
 
 		// Кадастровый номер участка
-		public virtual ParcelNumber Number
-		{
-			get
-			{
-				return new ParcelNumber(this.block.Number, this.localNumber);
-			}
-		}
+		public virtual ParcelNumber Number =>
+			new ParcelNumber(this.block.Number, this.localNumber);
 
 		// ???
-		public virtual ParcelNumber FullNumber
-		{
-			get
-			{
-				return this.Number;
-			}
-		}
+		public virtual ParcelNumber FullNumber =>
+			this.Number;
 
 		// Тип участка
 		private ParcelType type;
-		public virtual ParcelType Type
-		{
-			get
-			{
-				return this.type;
-			}
-			//set
-			//{
-			//	type = value;
-			//}
-		}
+		public virtual ParcelType Type =>
+			this.type;
 
 		// Статус земельного участка
 		private ParcelState state;
 		public virtual ParcelState State
 		{
-			get
-			{
-				return this.state;
-			}
-			set
-			{
-				this.state = value;
-			}
+			get => this.state;
+			set => this.state = value;
 		}
 
 		// Дата постановки участка на учет
 		private DateTime creationDate;
-		public virtual DateTime CreationDate
-		{
-			get
-			{
-				return this.creationDate;
-			}
-		}
+		public virtual DateTime CreationDate =>
+			this.creationDate;
 
 		// Дата снятия участка с учета
 		private DateTime? removingDate;
-		public virtual bool HasRemovingDate
-		{
-			get
-			{
-				return this.removingDate.HasValue;
-			}
-		}
+		public virtual bool HasRemovingDate =>
+			this.removingDate.HasValue;
 
 		public virtual void UnsetRemovingDate()
 		{
 			this.removingDate = null;
 		}
 
-		public virtual DateTime RemovingDate
-		{
-			get
-			{
-				return this.removingDate.Value;
-			}
-			//protected set
-			//{
-			//	removingDate = value;
-			//}
-		}
+		public virtual DateTime RemovingDate =>
+			this.removingDate.Value;
 
 		// Категория земель участка
 		private LandCategory landCategory;
 		public virtual LandCategory LandCategory
 		{
-			get
-			{
-				return this.landCategory;
-			}
-			set
-			{
-				this.landCategory = value;
-			}
+			get => this.landCategory;
+			set => this.landCategory = value;
 		}
 
 		// Разрешенное использование земель участка
 		private LandUtilization landUtilization;
 		public virtual LandUtilization LandUtilization
 		{
-			get
-			{
-				return this.landUtilization;
-			}
-			set
-			{
-				this.landUtilization = value;
-			}
+			get => this.landUtilization;
+			set => this.landUtilization = value;
 		}
 
 		// Документированная площадь участка
 		private double documentedArea;
 		public virtual double DocumentedArea
 		{
-			get
-			{
-				return this.documentedArea;
-			}
-			set //!! must be removed
-			{
-				this.documentedArea = value;
-			}
+			get => this.documentedArea;
+			//!! must be removed
+			set => this.documentedArea = value;
 		}
 
 		// Cadastral value (кадастровая стоимость)
-		public virtual double CadastralValue
-		{
-			get
-			{
-				return this.DocumentedArea * 10.0;//!!block.CadastralValueFactors[category];
-			}
-		}
+		public virtual double CadastralValue =>
+			this.DocumentedArea * 10.0;//!!block.CadastralValueFactors[category];
 
 		// Права на земельный участок
 		private ISet<ParcelRight> rights;
 		public virtual ISet<ParcelRight> Rights
 		{
-			get
-			{
-				return this.rights;
-			}
-			protected set
-			{
-				this.rights = value;
-			}
+			get => this.rights;
+			protected set => this.rights = value;
 		}
 
 		// Ограничения (обременения) прав на земельный участок
 		private ISet<ParcelEncumbrance> encumbrances;
 		public virtual ISet<ParcelEncumbrance> Encumbrances
 		{
-			get
-			{
-				return this.encumbrances;
-			}
-			protected set
-			{
-				this.encumbrances = value;
-			}
+			get => this.encumbrances;
+			protected set => this.encumbrances = value;
 		}
 
 		protected IDictionary<int, ParcelLandPiece> numberedLandPieces;
 
 		// !! Bad idea to publish this to interface
-		public virtual IDictionary<int, ParcelLandPiece> NumberedLandPieces
-		{
-			get
-			{
-				return this.numberedLandPieces;
-			}
-		}
+		public virtual IDictionary<int, ParcelLandPiece> NumberedLandPieces =>
+			this.numberedLandPieces;
 
-		public virtual IEnumerable<ParcelLandPiece> LandPieces
-		{
-			get
-			{
-				return this.numberedLandPieces.Values;
-			}
-		}
+		public virtual IEnumerable<ParcelLandPiece> LandPieces =>
+			this.numberedLandPieces.Values;
 
 		private IDictionary<int, SubParcel> numberedSubParcels;
 
-		public virtual IDictionary<int, SubParcel> NumberedSubParcels
-		{
-			get
-			{
-				return this.numberedSubParcels;
-			}
-		}
+		public virtual IDictionary<int, SubParcel> NumberedSubParcels =>
+			this.numberedSubParcels;
 
-		public virtual IEnumerable<SubParcel> SubParcels
-		{
-			get
-			{
-				return this.numberedSubParcels.Values;
-			}
-		}
+		public virtual IEnumerable<SubParcel> SubParcels =>
+			this.numberedSubParcels.Values;
 
 		public override bool Equals(object obj)
 		{
@@ -295,10 +182,9 @@ namespace LandRush.Cadastre.Russia
 		// Контур участка
 		public virtual ParcelLandPiece LandPiece
 		{
-			get
-			{
-				return (this.LandPieces.Count() > 0) ? this.LandPieces.First() : null;
-			}
+			get =>
+				this.LandPieces.Count() > 0 ?
+					this.LandPieces.First() : null;
 			set
 			{
 				if (this.numberedLandPieces.Count() > 0) this.numberedLandPieces.Clear();
@@ -324,41 +210,23 @@ namespace LandRush.Cadastre.Russia
 		private bool hasAnotherParentBlock;
 		public virtual bool HasAnotherParentBlock
 		{
-			get
-			{
-				return this.hasAnotherParentBlock;
-			}
-			set
-			{
-				this.hasAnotherParentBlock = value;
-			}
+			get => this.hasAnotherParentBlock;
+			set => this.hasAnotherParentBlock = value;
 		}
 
 		// Локальный номер родительского участка в едином землепользовании
 		private int parentParcelLocalNumber;
 		public virtual int ParentParcelLocalNumber
 		{
-			get
-			{
-				return this.parentParcelLocalNumber;
-			}
-			set
-			{
-				this.parentParcelLocalNumber = value;
-			}
+			get => this.parentParcelLocalNumber;
+			set => this.parentParcelLocalNumber = value;
 		}
 
 		// Номер родительского участка в едином землепользовании
-		public virtual ParcelNumber? ParentParcelNumber
-		{
-			get
-			{
-				return
-						(this.hasAnotherParentBlock ?
-						new ParcelNumber(new BlockNumber(this.Number.DistrictNumber, 0), this.parentParcelLocalNumber) :
-						new ParcelNumber(this.Number.BlockNumber, this.parentParcelLocalNumber));
-			}
-		}
+		public virtual ParcelNumber? ParentParcelNumber =>
+			this.hasAnotherParentBlock ?
+				new ParcelNumber(new BlockNumber(this.Number.DistrictNumber, 0), this.parentParcelLocalNumber) :
+				new ParcelNumber(this.Number.BlockNumber, this.parentParcelLocalNumber);
 	}
 
 	public class UnifiedLandUseParcel : Parcel
@@ -381,21 +249,11 @@ namespace LandRush.Cadastre.Russia
 		private IDictionary<int, MulticontourParcelContour> numberedContours;
 
 		// Контуры участка
-		public virtual IDictionary<int, MulticontourParcelContour> NumberedContours
-		{
-			get
-			{
-				return this.numberedContours;
-			}
-		}
+		public virtual IDictionary<int, MulticontourParcelContour> NumberedContours =>
+			this.numberedContours;
 
-		public virtual IEnumerable<MulticontourParcelContour> Contours
-		{
-			get
-			{
-				return this.numberedContours.Values;
-			}
-		}
+		public virtual IEnumerable<MulticontourParcelContour> Contours =>
+			this.numberedContours.Values;
 	}
 
 	// Контур многоконтурного участка
@@ -410,38 +268,18 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		private MulticontourParcel parcel;
-		public virtual MulticontourParcel Parcel
-		{
-			get
-			{
-				return this.parcel;
-			}
-		}
+		public virtual MulticontourParcel Parcel =>
+			this.parcel;
 
 		private int localNumber;
-		public virtual int LocalNumber
-		{
-			get
-			{
-				return this.localNumber;
-			}
-		}
+		public virtual int LocalNumber =>
+			this.localNumber;
 
-		public virtual ParcelContourNumber Number
-		{
-			get
-			{
-				return new ParcelContourNumber(this.parcel.Number, this.localNumber);
-			}
-		}
+		public virtual ParcelContourNumber Number =>
+			new ParcelContourNumber(this.parcel.Number, this.localNumber);
 
-		public virtual ParcelLandPiece LandPiece
-		{
-			get
-			{
-				return this.Parcel.NumberedLandPieces[this.localNumber];
-			}
-		}
+		public virtual ParcelLandPiece LandPiece =>
+			this.Parcel.NumberedLandPieces[this.localNumber];
 
 		public override bool Equals(object obj)
 		{

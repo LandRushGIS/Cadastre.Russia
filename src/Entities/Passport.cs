@@ -49,8 +49,8 @@ namespace LandRush.Cadastre.Russia
 		/// </summary>
 		public virtual DateTime IssueDate
 		{
-			get { return this.issueDate; }
-			set { this.issueDate = value; }
+			get => this.issueDate;
+			set => this.issueDate = value;
 		}
 
 		/// <summary xml:lang="ru">
@@ -58,8 +58,8 @@ namespace LandRush.Cadastre.Russia
 		/// </summary>
 		public virtual string Issuer
 		{
-			get { return this.issuer; }
-			set { this.issuer = value; }
+			get => this.issuer;
+			set => this.issuer = value;
 		}
 
 		/// <summary xml:lang="ru">

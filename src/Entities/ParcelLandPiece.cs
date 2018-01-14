@@ -18,69 +18,34 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		private Parcel parcel;
-		public virtual Parcel Parcel
-		{
-			get
-			{
-				return this.parcel;
-			}
-		}
+		public virtual Parcel Parcel =>
+			this.parcel;
 
 		private int number;
-		public virtual int Number
-		{
-			get
-			{
-				return this.number;
-			}
-		}
+		public virtual int Number =>
+			this.number;
 
 		// Геометрия части земли
 		private IGeometry geometry;
-		public virtual IGeometry Geometry
-		{
-			get
-			{
-				return this.geometry;
-			}
-			//set
-			//{
-			//	geometry = value;
-			//}
-		}
+		public virtual IGeometry Geometry =>
+			this.geometry;
 
 		// Фактическая площадь части земли участка
-		public virtual double Area
-		{
-			get
-			{
-				return this.geometry.Area;
-			}
-		}
+		public virtual double Area =>
+			this.geometry.Area;
 
 		// Адрес
 		private string address;
 		public virtual string Address
 		{
-			get
-			{
-				return this.address;
-			}
-			set
-			{
-				this.address = value;
-			}
+			get => this.address;
+			set => this.address = value;
 		}
 
 		// Оценочная стоимость
 		private double? assessedValue;
-		public virtual bool HasAssessedValue
-		{
-			get
-			{
-				return this.assessedValue.HasValue;
-			}
-		}
+		public virtual bool HasAssessedValue =>
+			this.assessedValue.HasValue;
 
 		public virtual void UnsetAssessedValue()
 		{
@@ -89,28 +54,16 @@ namespace LandRush.Cadastre.Russia
 
 		public virtual double AssessedValue
 		{
-			get
-			{
-				return this.assessedValue.Value;
-			}
-			set
-			{
-				this.assessedValue = value;
-			}
+			get => this.assessedValue.Value;
+			set => this.assessedValue = value;
 		}
 
 		// Заметка (Note)
 		private string note;
 		public virtual string Note
 		{
-			get
-			{
-				return this.note;
-			}
-			set
-			{
-				this.note = value;
-			}
+			get => this.note;
+			set => this.note = value;
 		}
 
 		public override bool Equals(object obj)

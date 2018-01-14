@@ -13,30 +13,13 @@ namespace LandRush.Cadastre.Russia
 			this.name = name;
 		}
 
-		public virtual RegionNumber Number
-		{
-			get
-			{
-				return new RegionNumber(this.localNumber);
-			}
-		}
+		public virtual RegionNumber Number =>
+			new RegionNumber(this.localNumber);
 
 		private int localNumber;
-		public virtual int LocalNumber
-		{
-			get
-			{
-				return this.localNumber;
-			}
-		}
+		public virtual int LocalNumber => this.localNumber;
 
 		private string name;
-		public virtual string Name
-		{
-			get
-			{
-				return this.name;
-			}
-		}
+		public virtual string Name => this.name;
 	}
 }

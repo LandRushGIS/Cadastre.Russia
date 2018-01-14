@@ -16,78 +16,40 @@ namespace LandRush.Cadastre.Russia
 		private District district;
 		private int localNumber;
 
-		public virtual District District
-		{
-			get
-			{
-				return this.district;
-			}
-		}
+		public virtual District District =>
+			this.district;
 
-		public virtual int LocalNumber
-		{
-			get
-			{
-				return this.localNumber;
-			}
-		}
+		public virtual int LocalNumber =>
+			this.localNumber;
 
-		public virtual BlockNumber Number
-		{
-			get
-			{
-				return new BlockNumber(this.district.Number, this.localNumber);
-			}
-		}
+		public virtual BlockNumber Number =>
+			new BlockNumber(this.district.Number, this.localNumber);
 
 		// Название
 		private string name;
 		public virtual string Name
 		{
-			get
-			{
-				return this.name;
-			}
-			set
-			{
-				this.name = value;
-			}
+			get => this.name;
+			set => this.name = value;
 		}
 
 		// Заметка (Note)
 		private string note;
 		public virtual string Note
 		{
-			get
-			{
-				return this.note;
-			}
-			set
-			{
-				this.note = value;
-			}
+			get => this.note;
+			set => this.note = value;
 		}
 
 		// Документированная площадь квартала
 		private double? documentedArea;
-		public virtual bool HasDocumentedArea
-		{
-			get
-			{
-				return this.documentedArea.HasValue;
-			}
-		}
+		public virtual bool HasDocumentedArea =>
+			this.documentedArea.HasValue;
 
 		public virtual double DocumentedArea
 		{
-			get
-			{
-				return this.documentedArea.Value;
-			}
-			set
-			{
-				this.documentedArea = value;
-			}
+			get => this.documentedArea.Value;
+			set => this.documentedArea = value;
 		}
 
 		// Геометрия квартала
@@ -95,14 +57,8 @@ namespace LandRush.Cadastre.Russia
 		private IGeometry geometry;
 		public virtual IGeometry Geometry
 		{
-			get
-			{
-				return this.geometry;
-			}
-			set
-			{
-				this.geometry = value;
-			}
+			get => this.geometry;
+			set => this.geometry = value;
 		}
 
 		////// Коэффициенты кадастровой стоимости для участков в данном квартале (по категориям земель)

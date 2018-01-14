@@ -61,7 +61,8 @@ namespace LandRush.Cadastre.Russia
 			this.name = name ?? throw new ArgumentNullException(nameof(name));
 		}
 
-		public override string Name => this.name;
+		public override string Name =>
+			this.name;
 	}
 
 	/// <summary>
@@ -86,19 +87,25 @@ namespace LandRush.Cadastre.Russia
 		private string registrationRecordNumber;
 		private ParcelRight right;
 
-		public virtual string Series { get { return this.series; } }
-		public virtual string Number { get { return this.number; } }
+		public virtual string Series =>
+			this.series;
+
+		public virtual string Number =>
+			this.number;
+
 		public virtual DateTime Date
 		{
-			get { return this.date; }
-			set { this.date = value; }
+			get => this.date;
+			set => this.date = value;
 		}
 		public virtual string RegistrationRecordNumber
 		{
-			get { return this.registrationRecordNumber; }
-			set { this.registrationRecordNumber = value; }
+			get => this.registrationRecordNumber;
+			set => this.registrationRecordNumber = value;
 		}
-		public virtual ParcelRight Right { get { return this.right; } }
+
+		public virtual ParcelRight Right =>
+			this.right;
 
 		public override bool Equals(object obj)
 		{

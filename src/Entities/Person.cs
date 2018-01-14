@@ -30,8 +30,8 @@ namespace LandRush.Cadastre.Russia
 		/// </summary>
 		public virtual string FamilyName
 		{
-			get { return this.familyName; }
-			set { this.familyName = value; }
+			get => this.familyName;
+			set => this.familyName = value;
 		}
 
 		/// <summary xml:lang="ru">
@@ -39,8 +39,8 @@ namespace LandRush.Cadastre.Russia
 		/// </summary>
 		public virtual string FirstName
 		{
-			get { return this.firstName; }
-			set { this.firstName = value; }
+			get => this.firstName;
+			set => this.firstName = value;
 		}
 
 		/// <summary xml:lang="ru">
@@ -48,8 +48,8 @@ namespace LandRush.Cadastre.Russia
 		/// </summary>
 		public virtual string Patronymic
 		{
-			get { return this.patronymic; }
-			set { this.patronymic = value; }
+			get => this.patronymic;
+			set => this.patronymic = value;
 		}
 	}
 }

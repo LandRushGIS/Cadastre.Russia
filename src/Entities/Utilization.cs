@@ -27,11 +27,11 @@ namespace LandRush.Cadastre.Russia
 		/// <summary>
 		/// Вид использования земель
 		/// </summary>
-		public LandUtilizationKind Kind { get { return this.kind; } }
+		public LandUtilizationKind Kind => this.kind;
 
 		/// <summary>
 		/// Подробное описание использования земель (по документам)
 		/// </summary>
-		public string Description { get { return this.description; } }
+		public string Description => this.description;
 	}
 }

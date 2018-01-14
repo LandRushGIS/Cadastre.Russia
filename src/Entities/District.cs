@@ -14,22 +14,12 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		private Region region;
-		public virtual Region Region
-		{
-			get
-			{
-				return this.region;
-			}
-		}
+		public virtual Region Region =>
+			this.region;
 
 		private int localNumber;
-		public virtual int LocalNumber
-		{
-			get
-			{
-				return this.localNumber;
-			}
-		}
+		public virtual int LocalNumber =>
+			this.localNumber;
 
 		public override bool Equals(object obj)
 		{
@@ -42,12 +32,7 @@ namespace LandRush.Cadastre.Russia
 			return this.region.GetHashCode() ^ (int)this.localNumber;
 		}
 
-		public virtual DistrictNumber Number
-		{
-			get
-			{
-				return new DistrictNumber(this.region.Number, this.localNumber);
-			}
-		}
+		public virtual DistrictNumber Number =>
+			new DistrictNumber(this.region.Number, this.localNumber);
 	}
 }

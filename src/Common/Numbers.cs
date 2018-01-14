@@ -66,21 +66,11 @@ namespace LandRush.Cadastre.Russia
 		public readonly RegionNumber regionNumber;
 		public readonly int localNumber;
 
-		public RegionNumber RegionNumber
-		{
-			get
-			{
-				return this.regionNumber;
-			}
-		}
+		public RegionNumber RegionNumber =>
+			this.regionNumber;
 
-		public int LocalNumber
-		{
-			get
-			{
-				return this.localNumber;
-			}
-		}
+		public int LocalNumber =>
+			this.localNumber;
 
 		public override string ToString()
 		{
@@ -143,13 +133,8 @@ namespace LandRush.Cadastre.Russia
 			this.LocalNumber = localNumber;
 		}
 
-		public RegionNumber RegionNumber
-		{
-			get
-			{
-				return this.DistrictNumber.RegionNumber;
-			}
-		}
+		public RegionNumber RegionNumber =>
+			this.DistrictNumber.RegionNumber;
 
 		public readonly DistrictNumber DistrictNumber;
 		public readonly int LocalNumber;
@@ -215,21 +200,11 @@ namespace LandRush.Cadastre.Russia
 			this.LocalNumber = localNumber;
 		}
 
-		public RegionNumber RegionNumber
-		{
-			get
-			{
-				return this.DistrictNumber.RegionNumber;
-			}
-		}
+		public RegionNumber RegionNumber =>
+			this.DistrictNumber.RegionNumber;
 
-		public DistrictNumber DistrictNumber
-		{
-			get
-			{
-				return this.BlockNumber.DistrictNumber;
-			}
-		}
+		public DistrictNumber DistrictNumber =>
+			this.BlockNumber.DistrictNumber;
 
 		public readonly BlockNumber BlockNumber;
 		public readonly int LocalNumber;
@@ -300,29 +275,14 @@ namespace LandRush.Cadastre.Russia
 			this.LocalNumber = localNumber;
 		}
 
-		public RegionNumber RegionNumber
-		{
-			get
-			{
-				return this.DistrictNumber.RegionNumber;
-			}
-		}
+		public RegionNumber RegionNumber =>
+			this.DistrictNumber.RegionNumber;
 
-		public DistrictNumber DistrictNumber
-		{
-			get
-			{
-				return this.BlockNumber.DistrictNumber;
-			}
-		}
+		public DistrictNumber DistrictNumber =>
+			this.BlockNumber.DistrictNumber;
 
-		public BlockNumber BlockNumber
-		{
-			get
-			{
-				return this.ParcelNumber.BlockNumber;
-			}
-		}
+		public BlockNumber BlockNumber =>
+			this.ParcelNumber.BlockNumber;
 
 		public readonly ParcelNumber ParcelNumber;
 		public readonly int LocalNumber;
@@ -389,29 +349,14 @@ namespace LandRush.Cadastre.Russia
 			this.LocalNumber = localNumber;
 		}
 
-		public RegionNumber RegionNumber
-		{
-			get
-			{
-				return this.DistrictNumber.RegionNumber;
-			}
-		}
+		public RegionNumber RegionNumber =>
+			this.DistrictNumber.RegionNumber;
 
-		public DistrictNumber DistrictNumber
-		{
-			get
-			{
-				return this.BlockNumber.DistrictNumber;
-			}
-		}
+		public DistrictNumber DistrictNumber =>
+			this.BlockNumber.DistrictNumber;
 
-		public BlockNumber BlockNumber
-		{
-			get
-			{
-				return this.ParcelNumber.BlockNumber;
-			}
-		}
+		public BlockNumber BlockNumber =>
+			this.ParcelNumber.BlockNumber;
 
 		public readonly ParcelNumber ParcelNumber;
 		public readonly int LocalNumber;

@@ -25,22 +25,12 @@ namespace LandRush.Cadastre.Russia
 		protected int number;
 
 		private LandEncumbranceType landEncumbranceType;
-		public virtual LandEncumbranceType LandEncumbranceType
-		{
-			get
-			{
-				return this.landEncumbranceType;
-			}
-		}
+		public virtual LandEncumbranceType LandEncumbranceType =>
+			this.landEncumbranceType;
 
 		private string name;
-		public virtual string Name
-		{
-			get
-			{
-				return this.name;
-			}
-		}
+		public virtual string Name =>
+			this.name;
 
 		public virtual int CompareTo(CadastralUnitEncumbrance other)
 		{
@@ -68,13 +58,8 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		private Parcel parcel;
-		public virtual Parcel Parcel
-		{
-			get
-			{
-				return this.parcel;
-			}
-		}
+		public virtual Parcel Parcel =>
+			this.parcel;
 
 		public override bool Equals(object obj)
 		{
@@ -102,13 +87,8 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		private SubParcel subParcel;
-		public virtual SubParcel SubParcel
-		{
-			get
-			{
-				return this.subParcel;
-			}
-		}
+		public virtual SubParcel SubParcel =>
+			this.subParcel;
 
 		public override bool Equals(object obj)
 		{

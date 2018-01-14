@@ -20,51 +20,27 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		private Parcel parcel;
-		public virtual Parcel Parcel
-		{
-			get
-			{
-				return this.parcel;
-			}
-		}
+		public virtual Parcel Parcel => this.parcel;
 
 		private int localNumber;
-		public virtual int LocalNumber
-		{
-			get
-			{
-				return this.localNumber;
-			}
-		}
+		public virtual int LocalNumber => this.localNumber;
 
-		public virtual SubParcelNumber Number
-		{
-			get
-			{
-				return new SubParcelNumber(this.parcel.Number, this.localNumber);
-			}
-		}
+		public virtual SubParcelNumber Number =>
+			new SubParcelNumber(this.parcel.Number, this.localNumber);
 
 		/// <summary>
 		/// Статус части земельного участка
 		/// </summary>
 		private ParcelState state;
-		public virtual ParcelState State
-		{
-			get
-			{
-				return this.state;
-			}
-		}
+		public virtual ParcelState State => this.state;
 
 		private int? landPieceNumber;
 
 		public virtual ParcelLandPiece LandPiece
 		{
-			get
-			{
-				return this.landPieceNumber.HasValue ? this.parcel.NumberedLandPieces[this.landPieceNumber.Value] : null;
-			}
+			get =>
+				this.landPieceNumber.HasValue ?
+					this.parcel.NumberedLandPieces[this.landPieceNumber.Value] : null;
 			set
 			{
 				if (value == null)
@@ -80,14 +56,8 @@ namespace LandRush.Cadastre.Russia
 		private ISet<SubParcelEncumbrance> encumbrances;
 		public virtual ISet<SubParcelEncumbrance> Encumbrances
 		{
-			get
-			{
-				return this.encumbrances;
-			}
-			protected set
-			{
-				this.encumbrances = value;
-			}
+			get => this.encumbrances;
+			protected set => this.encumbrances = value;
 		}
 
 		public override bool Equals(object obj)

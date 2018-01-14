@@ -56,32 +56,32 @@ namespace LandRush.Cadastre.Russia
 
 		public virtual Landholder Landholder
 		{
-			get { return this.landholder; }
-			set { this.landholder = value; }
+			get => this.landholder;
+			set => this.landholder = value;
 		}
 
 		public virtual short ShareNumerator
 		{
-			get { return this.shareNumerator; }
-			set { this.shareNumerator = value; }
+			get => this.shareNumerator;
+			set => this.shareNumerator = value;
 		}
 
 		public virtual short ShareDenominator
 		{
-			get { return this.shareDenominator; }
-			set { this.shareDenominator = value; }
+			get => this.shareDenominator;
+			set => this.shareDenominator = value;
 		}
 
 		public virtual string ShareText
 		{
-			get { return this.shareText; }
-			set { this.shareText = value; }
+			get => this.shareText;
+			set => this.shareText = value;
 		}
 
 		public virtual string Description
 		{
-			get { return this.description; }
-			set { this.description = value; }
+			get => this.description;
+			set => this.description = value;
 		}
 
 		public override bool Equals(object obj)

@@ -15,27 +15,15 @@ namespace LandRush.Cadastre.Russia
 		private string code;
 		public virtual string Code
 		{
-			get
-			{
-				return this.code;
-			}
-			protected set
-			{
-				this.code = value;
-			}
+			get => this.code;
+			protected set => this.code = value;
 		}
 
 		private string description;
 		public virtual string Description
 		{
-			get
-			{
-				return this.description;
-			}
-			protected set
-			{
-				this.description = value;
-			}
+			get => this.description;
+			protected set => this.description = value;
 		}
 
 		public virtual int CompareTo(DomainValue other)
