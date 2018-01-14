@@ -42,7 +42,7 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		public override string Name =>
-			$"{person.FamilyName} {person.FirstName} {person.Patronymic}";
+			$"{this.person.FamilyName} {this.person.FirstName} {this.person.Patronymic}";
 
 		public virtual Person Person => this.person;
 	}
@@ -86,19 +86,19 @@ namespace LandRush.Cadastre.Russia
 		private string registrationRecordNumber;
 		private ParcelRight right;
 
-		public virtual string Series { get { return series; } }
-		public virtual string Number { get { return number; } }
+		public virtual string Series { get { return this.series; } }
+		public virtual string Number { get { return this.number; } }
 		public virtual DateTime Date
 		{
-			get { return date; }
-			set { date = value; }
+			get { return this.date; }
+			set { this.date = value; }
 		}
 		public virtual string RegistrationRecordNumber
 		{
-			get { return registrationRecordNumber; }
-			set { registrationRecordNumber = value; }
+			get { return this.registrationRecordNumber; }
+			set { this.registrationRecordNumber = value; }
 		}
-		public virtual ParcelRight Right { get { return right; } }
+		public virtual ParcelRight Right { get { return this.right; } }
 
 		public override bool Equals(object obj)
 		{

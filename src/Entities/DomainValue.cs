@@ -17,11 +17,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return code;
+				return this.code;
 			}
 			protected set
 			{
-				code = value;
+				this.code = value;
 			}
 		}
 
@@ -30,11 +30,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return description;
+				return this.description;
 			}
 			protected set
 			{
-				description = value;
+				this.description = value;
 			}
 		}
 
@@ -45,7 +45,7 @@ namespace LandRush.Cadastre.Russia
 
 		public override string ToString()
 		{
-			return description; // !
+			return this.description; // !
 		}
 	}
 }

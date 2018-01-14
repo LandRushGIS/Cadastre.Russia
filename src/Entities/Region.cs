@@ -17,7 +17,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return new RegionNumber(localNumber);
+				return new RegionNumber(this.localNumber);
 			}
 		}
 
@@ -26,7 +26,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return localNumber;
+				return this.localNumber;
 			}
 		}
 
@@ -35,7 +35,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return name;
+				return this.name;
 			}
 		}
 	}

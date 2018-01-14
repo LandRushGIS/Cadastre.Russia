@@ -20,7 +20,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return district;
+				return this.district;
 			}
 		}
 
@@ -28,7 +28,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return localNumber;
+				return this.localNumber;
 			}
 		}
 
@@ -36,7 +36,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return new BlockNumber(district.Number, localNumber);
+				return new BlockNumber(this.district.Number, this.localNumber);
 			}
 		}
 
@@ -46,11 +46,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return name;
+				return this.name;
 			}
 			set
 			{
-				name = value;
+				this.name = value;
 			}
 		}
 
@@ -60,11 +60,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return note;
+				return this.note;
 			}
 			set
 			{
-				note = value;
+				this.note = value;
 			}
 		}
 
@@ -74,7 +74,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return documentedArea.HasValue;
+				return this.documentedArea.HasValue;
 			}
 		}
 
@@ -82,11 +82,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return documentedArea.Value;
+				return this.documentedArea.Value;
 			}
 			set
 			{
-				documentedArea = value;
+				this.documentedArea = value;
 			}
 		}
 
@@ -97,11 +97,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return geometry;
+				return this.geometry;
 			}
 			set
 			{
-				geometry = value;
+				this.geometry = value;
 			}
 		}
 

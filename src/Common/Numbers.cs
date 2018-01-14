@@ -16,7 +16,7 @@ namespace LandRush.Cadastre.Russia
 
 		public override string ToString()
 		{
-			return LocalNumber.ToString("D2");
+			return this.LocalNumber.ToString("D2");
 		}
 
 		public static bool operator ==(RegionNumber regionNumber1, RegionNumber regionNumber2)
@@ -48,7 +48,7 @@ namespace LandRush.Cadastre.Russia
 
 		public int CompareTo(RegionNumber other)
 		{
-			return LocalNumber.CompareTo(other.LocalNumber);
+			return this.LocalNumber.CompareTo(other.LocalNumber);
 		}
 	}
 
@@ -70,7 +70,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return regionNumber;
+				return this.regionNumber;
 			}
 		}
 
@@ -78,13 +78,13 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return localNumber;
+				return this.localNumber;
 			}
 		}
 
 		public override string ToString()
 		{
-			return RegionNumber.ToString() + ":" + LocalNumber.ToString("D2");
+			return this.RegionNumber.ToString() + ":" + this.LocalNumber.ToString("D2");
 		}
 
 		public static bool operator ==(DistrictNumber districtNumber1, DistrictNumber districtNumber2)
@@ -127,8 +127,8 @@ namespace LandRush.Cadastre.Russia
 
 		public int CompareTo(DistrictNumber other)
 		{
-			int regionNumberCompareResult = regionNumber.CompareTo(other.regionNumber);
-			return (regionNumberCompareResult == 0) ? localNumber.CompareTo(localNumber) : regionNumberCompareResult;
+			int regionNumberCompareResult = this.regionNumber.CompareTo(other.regionNumber);
+			return (regionNumberCompareResult == 0) ? this.localNumber.CompareTo(this.localNumber) : regionNumberCompareResult;
 		}
 	}
 
@@ -147,7 +147,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return DistrictNumber.RegionNumber;
+				return this.DistrictNumber.RegionNumber;
 			}
 		}
 
@@ -156,7 +156,7 @@ namespace LandRush.Cadastre.Russia
 
 		public override string ToString()
 		{
-			return DistrictNumber.ToString() + ":" + LocalNumber.ToString("D7");
+			return this.DistrictNumber.ToString() + ":" + this.LocalNumber.ToString("D7");
 		}
 
 		public static bool operator ==(BlockNumber blockNumber1, BlockNumber blockNumber2)
@@ -199,8 +199,8 @@ namespace LandRush.Cadastre.Russia
 
 		public int CompareTo(BlockNumber other)
 		{
-			int districtNumberCompareResult = DistrictNumber.CompareTo(other.DistrictNumber);
-			return (districtNumberCompareResult == 0) ? LocalNumber.CompareTo(LocalNumber) : districtNumberCompareResult;
+			int districtNumberCompareResult = this.DistrictNumber.CompareTo(other.DistrictNumber);
+			return (districtNumberCompareResult == 0) ? this.LocalNumber.CompareTo(this.LocalNumber) : districtNumberCompareResult;
 		}
 	}
 
@@ -219,7 +219,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return DistrictNumber.RegionNumber;
+				return this.DistrictNumber.RegionNumber;
 			}
 		}
 
@@ -227,7 +227,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return BlockNumber.DistrictNumber;
+				return this.BlockNumber.DistrictNumber;
 			}
 		}
 
@@ -236,7 +236,7 @@ namespace LandRush.Cadastre.Russia
 
 		public override string ToString()
 		{
-			return BlockNumber.ToString() + ":" + LocalNumber.ToString();
+			return this.BlockNumber.ToString() + ":" + this.LocalNumber.ToString();
 		}
 
 		public static bool operator ==(ParcelNumber parcelNumber1, ParcelNumber parcelNumber2)
@@ -279,8 +279,8 @@ namespace LandRush.Cadastre.Russia
 
 		public int CompareTo(ParcelNumber other)
 		{
-			int blockNumberCompareResult = BlockNumber.CompareTo(other.BlockNumber);
-			return (blockNumberCompareResult == 0) ? LocalNumber.CompareTo(other.LocalNumber) : blockNumberCompareResult;
+			int blockNumberCompareResult = this.BlockNumber.CompareTo(other.BlockNumber);
+			return (blockNumberCompareResult == 0) ? this.LocalNumber.CompareTo(other.LocalNumber) : blockNumberCompareResult;
 		}
 
 		int IComparable.CompareTo(object other)
@@ -304,7 +304,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return DistrictNumber.RegionNumber;
+				return this.DistrictNumber.RegionNumber;
 			}
 		}
 
@@ -312,7 +312,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return BlockNumber.DistrictNumber;
+				return this.BlockNumber.DistrictNumber;
 			}
 		}
 
@@ -320,7 +320,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return ParcelNumber.BlockNumber;
+				return this.ParcelNumber.BlockNumber;
 			}
 		}
 
@@ -329,7 +329,7 @@ namespace LandRush.Cadastre.Russia
 
 		public override string ToString()
 		{
-			return ParcelNumber.ToString() + "(" + LocalNumber.ToString() + ")";
+			return this.ParcelNumber.ToString() + "(" + this.LocalNumber.ToString() + ")";
 		}
 
 		public static bool operator ==(ParcelContourNumber parcelContourNumber1, ParcelContourNumber parcelContourNumber2)
@@ -373,8 +373,8 @@ namespace LandRush.Cadastre.Russia
 
 		public int CompareTo(ParcelContourNumber other)
 		{
-			int parcelNumberCompareResult = ParcelNumber.CompareTo(other.ParcelNumber);
-			return (parcelNumberCompareResult == 0) ? LocalNumber.CompareTo(LocalNumber) : parcelNumberCompareResult;
+			int parcelNumberCompareResult = this.ParcelNumber.CompareTo(other.ParcelNumber);
+			return (parcelNumberCompareResult == 0) ? this.LocalNumber.CompareTo(this.LocalNumber) : parcelNumberCompareResult;
 		}
 	}
 
@@ -393,7 +393,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return DistrictNumber.RegionNumber;
+				return this.DistrictNumber.RegionNumber;
 			}
 		}
 
@@ -401,7 +401,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return BlockNumber.DistrictNumber;
+				return this.BlockNumber.DistrictNumber;
 			}
 		}
 
@@ -409,7 +409,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return ParcelNumber.BlockNumber;
+				return this.ParcelNumber.BlockNumber;
 			}
 		}
 
@@ -418,7 +418,7 @@ namespace LandRush.Cadastre.Russia
 
 		public override string ToString()
 		{
-			return ParcelNumber.ToString() + "/" + LocalNumber.ToString();
+			return this.ParcelNumber.ToString() + "/" + this.LocalNumber.ToString();
 		}
 
 		public static bool operator ==(SubParcelNumber subParcelNumber1, SubParcelNumber subParcelNumber2)
@@ -462,8 +462,8 @@ namespace LandRush.Cadastre.Russia
 
 		public int CompareTo(SubParcelNumber other)
 		{
-			int parcelNumberCompareResult = ParcelNumber.CompareTo(other.ParcelNumber);
-			return (parcelNumberCompareResult == 0) ? LocalNumber.CompareTo(LocalNumber) : parcelNumberCompareResult;
+			int parcelNumberCompareResult = this.ParcelNumber.CompareTo(other.ParcelNumber);
+			return (parcelNumberCompareResult == 0) ? this.LocalNumber.CompareTo(this.LocalNumber) : parcelNumberCompareResult;
 		}
 	}
 }

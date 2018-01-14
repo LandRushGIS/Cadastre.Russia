@@ -62,7 +62,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return block;
+				return this.block;
 			}
 		}
 
@@ -71,7 +71,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return localNumber;
+				return this.localNumber;
 			}
 		}
 
@@ -80,7 +80,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return new ParcelNumber(block.Number, localNumber);
+				return new ParcelNumber(this.block.Number, this.localNumber);
 			}
 		}
 
@@ -89,7 +89,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return Number;
+				return this.Number;
 			}
 		}
 
@@ -99,7 +99,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return type;
+				return this.type;
 			}
 			//set
 			//{
@@ -113,11 +113,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return state;
+				return this.state;
 			}
 			set
 			{
-				state = value;
+				this.state = value;
 			}
 		}
 
@@ -127,7 +127,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return creationDate;
+				return this.creationDate;
 			}
 		}
 
@@ -137,20 +137,20 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return removingDate.HasValue;
+				return this.removingDate.HasValue;
 			}
 		}
 
 		public virtual void UnsetRemovingDate()
 		{
-			removingDate = null;
+			this.removingDate = null;
 		}
 
 		public virtual DateTime RemovingDate
 		{
 			get
 			{
-				return removingDate.Value;
+				return this.removingDate.Value;
 			}
 			//protected set
 			//{
@@ -164,11 +164,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return landCategory;
+				return this.landCategory;
 			}
 			set
 			{
-				landCategory = value;
+				this.landCategory = value;
 			}
 		}
 
@@ -178,11 +178,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return landUtilization;
+				return this.landUtilization;
 			}
 			set
 			{
-				landUtilization = value;
+				this.landUtilization = value;
 			}
 		}
 
@@ -192,11 +192,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return documentedArea;
+				return this.documentedArea;
 			}
 			set //!! must be removed
 			{
-				documentedArea = value;
+				this.documentedArea = value;
 			}
 		}
 
@@ -205,7 +205,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return DocumentedArea * 10.0;//!!block.CadastralValueFactors[category];
+				return this.DocumentedArea * 10.0;//!!block.CadastralValueFactors[category];
 			}
 		}
 
@@ -215,11 +215,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return rights;
+				return this.rights;
 			}
 			protected set
 			{
-				rights = value;
+				this.rights = value;
 			}
 		}
 
@@ -229,11 +229,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return encumbrances;
+				return this.encumbrances;
 			}
 			protected set
 			{
-				encumbrances = value;
+				this.encumbrances = value;
 			}
 		}
 
@@ -244,7 +244,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return numberedLandPieces;
+				return this.numberedLandPieces;
 			}
 		}
 
@@ -252,7 +252,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return numberedLandPieces.Values;
+				return this.numberedLandPieces.Values;
 			}
 		}
 
@@ -262,7 +262,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return numberedSubParcels;
+				return this.numberedSubParcels;
 			}
 		}
 
@@ -270,7 +270,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return numberedSubParcels.Values;
+				return this.numberedSubParcels.Values;
 			}
 		}
 
@@ -297,12 +297,12 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return (LandPieces.Count() > 0) ? LandPieces.First() : null;
+				return (this.LandPieces.Count() > 0) ? this.LandPieces.First() : null;
 			}
 			set
 			{
-				if (numberedLandPieces.Count() > 0) numberedLandPieces.Clear();
-				numberedLandPieces.Add(0, value);
+				if (this.numberedLandPieces.Count() > 0) this.numberedLandPieces.Clear();
+				this.numberedLandPieces.Add(0, value);
 			}
 		}
 	}
@@ -326,11 +326,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return hasAnotherParentBlock;
+				return this.hasAnotherParentBlock;
 			}
 			set
 			{
-				hasAnotherParentBlock = value;
+				this.hasAnotherParentBlock = value;
 			}
 		}
 
@@ -340,11 +340,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return parentParcelLocalNumber;
+				return this.parentParcelLocalNumber;
 			}
 			set
 			{
-				parentParcelLocalNumber = value;
+				this.parentParcelLocalNumber = value;
 			}
 		}
 
@@ -354,9 +354,9 @@ namespace LandRush.Cadastre.Russia
 			get
 			{
 				return
-						(hasAnotherParentBlock ?
-						new ParcelNumber(new BlockNumber(Number.DistrictNumber, 0), parentParcelLocalNumber) :
-						new ParcelNumber(Number.BlockNumber, parentParcelLocalNumber));
+						(this.hasAnotherParentBlock ?
+						new ParcelNumber(new BlockNumber(this.Number.DistrictNumber, 0), this.parentParcelLocalNumber) :
+						new ParcelNumber(this.Number.BlockNumber, this.parentParcelLocalNumber));
 			}
 		}
 	}
@@ -375,7 +375,7 @@ namespace LandRush.Cadastre.Russia
 		public MulticontourParcel(Block block, int localNumber, DateTime creationDate)
 			: base(block, localNumber, creationDate)
 		{
-			numberedContours = new Dictionary<int, MulticontourParcelContour>();
+			this.numberedContours = new Dictionary<int, MulticontourParcelContour>();
 		}
 
 		private IDictionary<int, MulticontourParcelContour> numberedContours;
@@ -385,7 +385,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return numberedContours;
+				return this.numberedContours;
 			}
 		}
 
@@ -393,7 +393,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return numberedContours.Values;
+				return this.numberedContours.Values;
 			}
 		}
 	}
@@ -414,7 +414,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return parcel;
+				return this.parcel;
 			}
 		}
 
@@ -423,7 +423,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return localNumber;
+				return this.localNumber;
 			}
 		}
 
@@ -431,7 +431,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return new ParcelContourNumber(parcel.Number, localNumber);
+				return new ParcelContourNumber(this.parcel.Number, this.localNumber);
 			}
 		}
 
@@ -439,7 +439,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return Parcel.NumberedLandPieces[localNumber];
+				return this.Parcel.NumberedLandPieces[this.localNumber];
 			}
 		}
 

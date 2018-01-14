@@ -62,7 +62,7 @@ namespace LandRush.Cadastre.Russia.DTO
 
 		public override string ToString()
 		{
-			return "Parcel №" + Number.ToString();
+			return "Parcel №" + this.Number.ToString();
 		}
 	}
 

@@ -24,7 +24,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return parcel;
+				return this.parcel;
 			}
 		}
 
@@ -33,7 +33,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return localNumber;
+				return this.localNumber;
 			}
 		}
 
@@ -41,7 +41,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return new SubParcelNumber(parcel.Number, localNumber);
+				return new SubParcelNumber(this.parcel.Number, this.localNumber);
 			}
 		}
 
@@ -53,7 +53,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return state;
+				return this.state;
 			}
 		}
 
@@ -63,16 +63,16 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return landPieceNumber.HasValue ? parcel.NumberedLandPieces[landPieceNumber.Value] : null;
+				return this.landPieceNumber.HasValue ? this.parcel.NumberedLandPieces[this.landPieceNumber.Value] : null;
 			}
 			set
 			{
 				if (value == null)
-					landPieceNumber = null;
+					this.landPieceNumber = null;
 				else if (this.parcel != value.Parcel)
 					throw new InvalidOperationException("Land piece belongs to another parcel");
 				else
-					landPieceNumber = value.Number;
+					this.landPieceNumber = value.Number;
 			}
 		}
 
@@ -82,11 +82,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return encumbrances;
+				return this.encumbrances;
 			}
 			protected set
 			{
-				encumbrances = value;
+				this.encumbrances = value;
 			}
 		}
 

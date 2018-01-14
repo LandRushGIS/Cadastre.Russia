@@ -1,0 +1,4 @@
+## migration files
+[*.cs]
+# Don't require properties to be qualified with "this."
+dotnet_style_qualification_for_property = false:none

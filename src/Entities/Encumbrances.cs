@@ -29,7 +29,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return landEncumbranceType;
+				return this.landEncumbranceType;
 			}
 		}
 
@@ -38,7 +38,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return name;
+				return this.name;
 			}
 		}
 
@@ -50,7 +50,7 @@ namespace LandRush.Cadastre.Russia
 		// !!
 		public override string ToString()
 		{
-			return name + " (" + landEncumbranceType.Description + ")";
+			return this.name + " (" + this.landEncumbranceType.Description + ")";
 		}
 	}
 
@@ -72,7 +72,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return parcel;
+				return this.parcel;
 			}
 		}
 
@@ -106,7 +106,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return subParcel;
+				return this.subParcel;
 			}
 		}
 

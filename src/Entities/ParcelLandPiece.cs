@@ -22,7 +22,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return parcel;
+				return this.parcel;
 			}
 		}
 
@@ -31,7 +31,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return number;
+				return this.number;
 			}
 		}
 
@@ -41,7 +41,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return geometry;
+				return this.geometry;
 			}
 			//set
 			//{
@@ -54,7 +54,7 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return geometry.Area;
+				return this.geometry.Area;
 			}
 		}
 
@@ -64,11 +64,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return address;
+				return this.address;
 			}
 			set
 			{
-				address = value;
+				this.address = value;
 			}
 		}
 
@@ -78,24 +78,24 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return assessedValue.HasValue;
+				return this.assessedValue.HasValue;
 			}
 		}
 
 		public virtual void UnsetAssessedValue()
 		{
-			assessedValue = null;
+			this.assessedValue = null;
 		}
 
 		public virtual double AssessedValue
 		{
 			get
 			{
-				return assessedValue.Value;
+				return this.assessedValue.Value;
 			}
 			set
 			{
-				assessedValue = value;
+				this.assessedValue = value;
 			}
 		}
 
@@ -105,11 +105,11 @@ namespace LandRush.Cadastre.Russia
 		{
 			get
 			{
-				return note;
+				return this.note;
 			}
 			set
 			{
-				note = value;
+				this.note = value;
 			}
 		}
 
