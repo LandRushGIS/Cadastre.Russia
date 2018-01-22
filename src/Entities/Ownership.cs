@@ -11,10 +11,8 @@ namespace LandRush.Cadastre.Russia
 
 		protected Landholder() { }
 
-		public Landholder(int id)
-		{
+		public Landholder(int id) =>
 			this.id = id;
-		}
 
 		/// <summary xml:lang="ru">
 		/// Внутренний идентификатор
@@ -36,10 +34,8 @@ namespace LandRush.Cadastre.Russia
 
 		protected PersonLandholder() { }
 
-		public PersonLandholder(int id, Person person) : base(id)
-		{
+		public PersonLandholder(int id, Person person) : base(id) =>
 			this.person = person ?? throw new ArgumentNullException(nameof(person));
-		}
 
 		public override string Name =>
 			$"{this.person.FamilyName} {this.person.FirstName} {this.person.Patronymic}";
@@ -56,10 +52,8 @@ namespace LandRush.Cadastre.Russia
 
 		protected OrganizationLandholder() { }
 
-		public OrganizationLandholder(int id, string name) : base(id)
-		{
+		public OrganizationLandholder(int id, string name) : base(id) =>
 			this.name = name ?? throw new ArgumentNullException(nameof(name));
-		}
 
 		public override string Name =>
 			this.name;
@@ -107,15 +101,14 @@ namespace LandRush.Cadastre.Russia
 		public virtual ParcelRight Right =>
 			this.right;
 
-		public override bool Equals(object obj)
-		{
-			if ((obj == null) || !(obj is ParcelRightsCertificate)) return false;
-			else return ((obj as ParcelRightsCertificate).series == this.series) && ((obj as ParcelRightsCertificate).number == this.number);
-		}
+		public override bool Equals(object obj) =>
+			obj is ParcelRightsCertificate other ?
+				this.series == other.series &&
+				this.number == other.number :
+				false;
 
-		public override int GetHashCode()
-		{
-			return this.series.GetHashCode() ^ (int)this.number.GetHashCode();
-		}
+		public override int GetHashCode() =>
+			this.series.GetHashCode() ^
+			this.number.GetHashCode();
 	}
 }

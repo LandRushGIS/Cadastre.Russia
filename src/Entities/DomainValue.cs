@@ -26,14 +26,10 @@ namespace LandRush.Cadastre.Russia
 			protected set => this.description = value;
 		}
 
-		public virtual int CompareTo(DomainValue other)
-		{
-			return this.code.CompareTo(other.code);
-		}
+		public virtual int CompareTo(DomainValue other) =>
+			this.code.CompareTo(other.code);
 
-		public override string ToString()
-		{
-			return this.description; // !
-		}
+		public override string ToString() =>
+			this.description; // !
 	}
 }

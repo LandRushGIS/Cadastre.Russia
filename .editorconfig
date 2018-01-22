@@ -15,10 +15,10 @@ dotnet_style_qualification_for_field = true:error
 dotnet_style_qualification_for_property = true:error
 dotnet_style_qualification_for_method = true:error
 dotnet_style_qualification_for_event = true:error
-# Allow method-like constructs to have a block body
-csharp_style_expression_bodied_methods = false:none
-csharp_style_expression_bodied_constructors = false:none
-csharp_style_expression_bodied_operators = false:none
+# Prefer method-like constructs to have an expression-body
+csharp_style_expression_bodied_methods = true:error
+csharp_style_expression_bodied_constructors = true:error
+csharp_style_expression_bodied_operators = true:error
 # Prefer property-like constructs to have an expression-body
 csharp_style_expression_bodied_properties = true:error
 csharp_style_expression_bodied_indexers = true:error

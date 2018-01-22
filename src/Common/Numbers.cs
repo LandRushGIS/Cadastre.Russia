@@ -7,32 +7,22 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public struct RegionNumber : IComparable<RegionNumber>
 	{
-		public RegionNumber(int localNumber)
-		{
+		public RegionNumber(int localNumber) =>
 			this.LocalNumber = localNumber;
-		}
 
 		public readonly int LocalNumber;
 
-		public override string ToString()
-		{
-			return this.LocalNumber.ToString("D2");
-		}
+		public override string ToString() =>
+			this.LocalNumber.ToString("D2");
 
-		public static bool operator ==(RegionNumber regionNumber1, RegionNumber regionNumber2)
-		{
-			return (regionNumber1.LocalNumber == regionNumber2.LocalNumber);
-		}
+		public static bool operator ==(RegionNumber regionNumber1, RegionNumber regionNumber2) =>
+			regionNumber1.LocalNumber == regionNumber2.LocalNumber;
 
-		public static bool operator !=(RegionNumber regionNumber1, RegionNumber regionNumber2)
-		{
-			return !(regionNumber1 == regionNumber2);
-		}
+		public static bool operator !=(RegionNumber regionNumber1, RegionNumber regionNumber2) =>
+			!(regionNumber1 == regionNumber2);
 
-		public static RegionNumber Parse(string s)
-		{
-			return new RegionNumber(int.Parse(s));
-		}
+		public static RegionNumber Parse(string s) =>
+			new RegionNumber(int.Parse(s ?? throw new ArgumentNullException(nameof(s))));
 
 		public static bool TryParse(string s, out RegionNumber result)
 		{
@@ -46,10 +36,8 @@ namespace LandRush.Cadastre.Russia
 			return false;
 		}
 
-		public int CompareTo(RegionNumber other)
-		{
-			return this.LocalNumber.CompareTo(other.LocalNumber);
-		}
+		public int CompareTo(RegionNumber other) =>
+			this.LocalNumber.CompareTo(other.LocalNumber);
 	}
 
 	/// <summary>
@@ -72,26 +60,24 @@ namespace LandRush.Cadastre.Russia
 		public int LocalNumber =>
 			this.localNumber;
 
-		public override string ToString()
-		{
-			return this.RegionNumber.ToString() + ":" + this.LocalNumber.ToString("D2");
-		}
+		public override string ToString() =>
+			$"{this.RegionNumber}:{this.LocalNumber:D2}";
 
-		public static bool operator ==(DistrictNumber districtNumber1, DistrictNumber districtNumber2)
-		{
-			return (districtNumber1.RegionNumber == districtNumber2.RegionNumber) && (districtNumber1.LocalNumber == districtNumber2.LocalNumber);
-		}
+		public static bool operator ==(DistrictNumber districtNumber1, DistrictNumber districtNumber2) =>
+			districtNumber1.RegionNumber == districtNumber2.RegionNumber &&
+			districtNumber1.LocalNumber == districtNumber2.LocalNumber;
 
-		public static bool operator !=(DistrictNumber districtNumber1, DistrictNumber districtNumber2)
-		{
-			return !(districtNumber1 == districtNumber2);
-		}
+		public static bool operator !=(DistrictNumber districtNumber1, DistrictNumber districtNumber2) =>
+			!(districtNumber1 == districtNumber2);
 
 		public static DistrictNumber Parse(string s)
 		{
 			int lastDelimiterPosition = s.LastIndexOf(':');
 			if (lastDelimiterPosition <= 0) throw new FormatException();
-			return new DistrictNumber(RegionNumber.Parse(s.Substring(0, lastDelimiterPosition)), int.Parse(s.Substring(lastDelimiterPosition + 1, s.Length - lastDelimiterPosition - 1)));
+			return new DistrictNumber(
+					RegionNumber.Parse(s.Substring(0, lastDelimiterPosition)),
+					int.Parse(s.Substring(lastDelimiterPosition + 1, s.Length - lastDelimiterPosition - 1))
+				);
 		}
 
 		public static bool TryParse(string s, out DistrictNumber result)
@@ -139,26 +125,24 @@ namespace LandRush.Cadastre.Russia
 		public readonly DistrictNumber DistrictNumber;
 		public readonly int LocalNumber;
 
-		public override string ToString()
-		{
-			return this.DistrictNumber.ToString() + ":" + this.LocalNumber.ToString("D7");
-		}
+		public override string ToString() =>
+			$"{this.DistrictNumber}:{this.LocalNumber:D7}";
 
-		public static bool operator ==(BlockNumber blockNumber1, BlockNumber blockNumber2)
-		{
-			return (blockNumber1.DistrictNumber == blockNumber2.DistrictNumber) && (blockNumber1.LocalNumber == blockNumber2.LocalNumber);
-		}
+		public static bool operator ==(BlockNumber blockNumber1, BlockNumber blockNumber2) =>
+			blockNumber1.DistrictNumber == blockNumber2.DistrictNumber &&
+			blockNumber1.LocalNumber == blockNumber2.LocalNumber;
 
-		public static bool operator !=(BlockNumber blockNumber1, BlockNumber blockNumber2)
-		{
-			return !(blockNumber1 == blockNumber2);
-		}
+		public static bool operator !=(BlockNumber blockNumber1, BlockNumber blockNumber2) =>
+			!(blockNumber1 == blockNumber2);
 
 		public static BlockNumber Parse(string s)
 		{
 			int lastDelimiterPosition = s.LastIndexOf(':');
 			if (lastDelimiterPosition <= 0) throw new FormatException();
-			return new BlockNumber(DistrictNumber.Parse(s.Substring(0, lastDelimiterPosition)), int.Parse(s.Substring(lastDelimiterPosition + 1, s.Length - lastDelimiterPosition - 1)));
+			return new BlockNumber(
+					DistrictNumber.Parse(s.Substring(0, lastDelimiterPosition)),
+					int.Parse(s.Substring(lastDelimiterPosition + 1, s.Length - lastDelimiterPosition - 1))
+				);
 		}
 
 		public static bool TryParse(string s, out BlockNumber result)
@@ -209,26 +193,24 @@ namespace LandRush.Cadastre.Russia
 		public readonly BlockNumber BlockNumber;
 		public readonly int LocalNumber;
 
-		public override string ToString()
-		{
-			return this.BlockNumber.ToString() + ":" + this.LocalNumber.ToString();
-		}
+		public override string ToString() =>
+			$"{this.BlockNumber}:{this.LocalNumber}";
 
-		public static bool operator ==(ParcelNumber parcelNumber1, ParcelNumber parcelNumber2)
-		{
-			return (parcelNumber1.BlockNumber == parcelNumber2.BlockNumber) && (parcelNumber1.LocalNumber == parcelNumber2.LocalNumber);
-		}
+		public static bool operator ==(ParcelNumber parcelNumber1, ParcelNumber parcelNumber2) =>
+			parcelNumber1.BlockNumber == parcelNumber2.BlockNumber &&
+			parcelNumber1.LocalNumber == parcelNumber2.LocalNumber;
 
-		public static bool operator !=(ParcelNumber parcelNumber1, ParcelNumber parcelNumber2)
-		{
-			return !(parcelNumber1 == parcelNumber2);
-		}
+		public static bool operator !=(ParcelNumber parcelNumber1, ParcelNumber parcelNumber2) =>
+			!(parcelNumber1 == parcelNumber2);
 
 		public static ParcelNumber Parse(string s)
 		{
 			int lastDelimiterPosition = s.LastIndexOf(':');
 			if (lastDelimiterPosition <= 0) throw new FormatException();
-			return new ParcelNumber(BlockNumber.Parse(s.Substring(0, lastDelimiterPosition)), int.Parse(s.Substring(lastDelimiterPosition + 1, s.Length - lastDelimiterPosition - 1)));
+			return new ParcelNumber(
+					BlockNumber.Parse(s.Substring(0, lastDelimiterPosition)),
+					int.Parse(s.Substring(lastDelimiterPosition + 1, s.Length - lastDelimiterPosition - 1))
+				);
 		}
 
 		public static bool TryParse(string s, out ParcelNumber result)
@@ -258,10 +240,8 @@ namespace LandRush.Cadastre.Russia
 			return (blockNumberCompareResult == 0) ? this.LocalNumber.CompareTo(other.LocalNumber) : blockNumberCompareResult;
 		}
 
-		int IComparable.CompareTo(object other)
-		{
-			return this.CompareTo((ParcelNumber)other);
-		}
+		int IComparable.CompareTo(object other) =>
+			this.CompareTo((ParcelNumber)other);
 	}
 
 	/// <summary>
@@ -287,20 +267,15 @@ namespace LandRush.Cadastre.Russia
 		public readonly ParcelNumber ParcelNumber;
 		public readonly int LocalNumber;
 
-		public override string ToString()
-		{
-			return this.ParcelNumber.ToString() + "(" + this.LocalNumber.ToString() + ")";
-		}
+		public override string ToString() =>
+			$"{this.ParcelNumber} ({this.LocalNumber})";
 
-		public static bool operator ==(ParcelContourNumber parcelContourNumber1, ParcelContourNumber parcelContourNumber2)
-		{
-			return (parcelContourNumber1.ParcelNumber == parcelContourNumber2.ParcelNumber) && (parcelContourNumber1.LocalNumber == parcelContourNumber2.LocalNumber);
-		}
+		public static bool operator ==(ParcelContourNumber parcelContourNumber1, ParcelContourNumber parcelContourNumber2) =>
+			parcelContourNumber1.ParcelNumber == parcelContourNumber2.ParcelNumber &&
+			parcelContourNumber1.LocalNumber == parcelContourNumber2.LocalNumber;
 
-		public static bool operator !=(ParcelContourNumber parcelContourNumber1, ParcelContourNumber parcelContourNumber2)
-		{
-			return !(parcelContourNumber1 == parcelContourNumber2);
-		}
+		public static bool operator !=(ParcelContourNumber parcelContourNumber1, ParcelContourNumber parcelContourNumber2) =>
+			!(parcelContourNumber1 == parcelContourNumber2);
 
 		public static ParcelContourNumber Parse(string s)
 		{
@@ -361,20 +336,15 @@ namespace LandRush.Cadastre.Russia
 		public readonly ParcelNumber ParcelNumber;
 		public readonly int LocalNumber;
 
-		public override string ToString()
-		{
-			return this.ParcelNumber.ToString() + "/" + this.LocalNumber.ToString();
-		}
+		public override string ToString() =>
+			$"{this.ParcelNumber}/{this.LocalNumber}";
 
-		public static bool operator ==(SubParcelNumber subParcelNumber1, SubParcelNumber subParcelNumber2)
-		{
-			return (subParcelNumber1.ParcelNumber == subParcelNumber2.ParcelNumber) && (subParcelNumber1.LocalNumber == subParcelNumber2.LocalNumber);
-		}
+		public static bool operator ==(SubParcelNumber subParcelNumber1, SubParcelNumber subParcelNumber2) =>
+			subParcelNumber1.ParcelNumber == subParcelNumber2.ParcelNumber &&
+			subParcelNumber1.LocalNumber == subParcelNumber2.LocalNumber;
 
-		public static bool operator !=(SubParcelNumber subParcelNumber1, SubParcelNumber subParcelNumber2)
-		{
-			return !(subParcelNumber1 == subParcelNumber2);
-		}
+		public static bool operator !=(SubParcelNumber subParcelNumber1, SubParcelNumber subParcelNumber2) =>
+			!(subParcelNumber1 == subParcelNumber2);
 
 		public static SubParcelNumber Parse(string s)
 		{

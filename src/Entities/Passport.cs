@@ -67,26 +67,14 @@ namespace LandRush.Cadastre.Russia
 		/// </summary>
 		public virtual Person Person => this.person;
 
-		public override bool Equals(object obj)
-		{
-			if (obj != null && obj is Passport)
-			{
-				var other = obj as Passport;
-				return
-					this.series == other.series &&
-					this.number == other.number;
-			}
-			else
-			{
-				return false;
-			}
-		}
+		public override bool Equals(object obj) =>
+			obj is Passport other ?
+				this.series == other.series &&
+				this.number == other.number :
+				false;
 
-		public override int GetHashCode()
-		{
-			return
-				this.series.GetHashCode() ^
-				this.number.GetHashCode();
-		}
+		public override int GetHashCode() =>
+			this.series.GetHashCode() ^
+			this.number.GetHashCode();
 	}
 }

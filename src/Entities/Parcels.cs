@@ -27,10 +27,8 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public /*abstract*/ class Parcel
 	{
-		static Parcel()
-		{
+		static Parcel() =>
 			types = new Dictionary<Type, ParcelType>();
-		}
 
 		private static IDictionary<Type, ParcelType> types;
 		public static IDictionary<Type, ParcelType> Types =>
@@ -91,10 +89,8 @@ namespace LandRush.Cadastre.Russia
 		public virtual bool HasRemovingDate =>
 			this.removingDate.HasValue;
 
-		public virtual void UnsetRemovingDate()
-		{
+		public virtual void UnsetRemovingDate() =>
 			this.removingDate = null;
-		}
 
 		public virtual DateTime RemovingDate =>
 			this.removingDate.Value;
@@ -161,16 +157,15 @@ namespace LandRush.Cadastre.Russia
 		public virtual IEnumerable<SubParcel> SubParcels =>
 			this.numberedSubParcels.Values;
 
-		public override bool Equals(object obj)
-		{
-			if ((obj == null) || !(obj is Parcel)) return false;
-			else return ((obj as Parcel).block == this.block) && ((obj as Parcel).localNumber == this.localNumber);
-		}
+		public override bool Equals(object obj) =>
+			obj is Parcel other ?
+				this.block == other.block &&
+				this.localNumber == other.localNumber :
+				false;
 
-		public override int GetHashCode()
-		{
-			return this.block.GetHashCode() ^ (int)this.localNumber.GetHashCode();
-		}
+		public override int GetHashCode() =>
+			this.block.GetHashCode() ^
+			this.localNumber.GetHashCode();
 	}
 
 	public class SingleLandPieceParcel : Parcel
@@ -241,10 +236,8 @@ namespace LandRush.Cadastre.Russia
 		protected MulticontourParcel() : this(null, 0, default(DateTime)) { }
 
 		public MulticontourParcel(Block block, int localNumber, DateTime creationDate)
-			: base(block, localNumber, creationDate)
-		{
+			: base(block, localNumber, creationDate) =>
 			this.numberedContours = new Dictionary<int, MulticontourParcelContour>();
-		}
 
 		private IDictionary<int, MulticontourParcelContour> numberedContours;
 
@@ -281,15 +274,14 @@ namespace LandRush.Cadastre.Russia
 		public virtual ParcelLandPiece LandPiece =>
 			this.Parcel.NumberedLandPieces[this.localNumber];
 
-		public override bool Equals(object obj)
-		{
-			if ((obj == null) || !(obj is MulticontourParcelContour)) return false;
-			else return ((obj as MulticontourParcelContour).parcel == this.parcel) && ((obj as MulticontourParcelContour).localNumber == this.localNumber);
-		}
+		public override bool Equals(object obj) =>
+			obj is MulticontourParcelContour other ?
+				this.parcel == other.parcel &&
+				this.localNumber == other.localNumber :
+				false;
 
-		public override int GetHashCode()
-		{
-			return this.parcel.GetHashCode() ^ (int)this.localNumber.GetHashCode();
-		}
+		public override int GetHashCode() =>
+			this.parcel.GetHashCode() ^
+			this.localNumber.GetHashCode();
 	}
 }

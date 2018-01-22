@@ -60,10 +60,8 @@ namespace LandRush.Cadastre.Russia.DTO
 		public bool? HasAnotherParentBlock;
 		public int? ParentParcelLocalNumber;
 
-		public override string ToString()
-		{
-			return "Parcel №" + this.Number.ToString();
-		}
+		public override string ToString() =>
+			$"Parcel №{this.Number}";
 	}
 
 	public struct SubParcel

@@ -47,10 +47,8 @@ namespace LandRush.Cadastre.Russia
 		public virtual bool HasAssessedValue =>
 			this.assessedValue.HasValue;
 
-		public virtual void UnsetAssessedValue()
-		{
+		public virtual void UnsetAssessedValue() =>
 			this.assessedValue = null;
-		}
 
 		public virtual double AssessedValue
 		{
@@ -66,15 +64,14 @@ namespace LandRush.Cadastre.Russia
 			set => this.note = value;
 		}
 
-		public override bool Equals(object obj)
-		{
-			if ((obj == null) || !(obj is ParcelLandPiece)) return false;
-			else return ((obj as ParcelLandPiece).parcel == this.parcel) && ((obj as ParcelLandPiece).number == this.number);
-		}
+		public override bool Equals(object obj) =>
+			obj is ParcelLandPiece other ?
+				this.parcel == other.parcel &&
+				this.number == other.number :
+				false;
 
-		public override int GetHashCode()
-		{
-			return this.parcel.GetHashCode() ^ (int)this.number.GetHashCode();
-		}
+		public override int GetHashCode() =>
+			this.parcel.GetHashCode() ^
+			this.number.GetHashCode();
 	}
 }

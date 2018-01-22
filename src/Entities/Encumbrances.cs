@@ -32,16 +32,12 @@ namespace LandRush.Cadastre.Russia
 		public virtual string Name =>
 			this.name;
 
-		public virtual int CompareTo(CadastralUnitEncumbrance other)
-		{
-			return this.number.CompareTo(other.number);
-		}
+		public virtual int CompareTo(CadastralUnitEncumbrance other) =>
+			this.number.CompareTo(other.number);
 
 		// !!
-		public override string ToString()
-		{
-			return this.name + " (" + this.landEncumbranceType.Description + ")";
-		}
+		public override string ToString() =>
+			$"{this.name} ({this.landEncumbranceType.Description})";
 	}
 
 	/// <summary>
@@ -52,25 +48,22 @@ namespace LandRush.Cadastre.Russia
 		protected ParcelEncumbrance() : base() { }
 
 		public ParcelEncumbrance(Parcel parcel, int number, LandEncumbranceType landEncumbranceType, string name)
-			: base(number, landEncumbranceType, name)
-		{
+			: base(number, landEncumbranceType, name) =>
 			this.parcel = parcel;
-		}
 
 		private Parcel parcel;
 		public virtual Parcel Parcel =>
 			this.parcel;
 
-		public override bool Equals(object obj)
-		{
-			if ((obj == null) || !(obj is ParcelEncumbrance)) return false;
-			else return ((obj as ParcelEncumbrance).parcel == this.parcel) && ((obj as ParcelEncumbrance).number == this.number);
-		}
+		public override bool Equals(object obj) =>
+			obj is ParcelEncumbrance other ?
+				this.parcel == other.parcel &&
+				this.number == other.number :
+				false;
 
-		public override int GetHashCode()
-		{
-			return this.parcel.GetHashCode() ^ (int)this.number.GetHashCode();
-		}
+		public override int GetHashCode() =>
+			this.parcel.GetHashCode() ^
+			this.number.GetHashCode();
 	}
 
 	/// <summary>
@@ -81,24 +74,21 @@ namespace LandRush.Cadastre.Russia
 		protected SubParcelEncumbrance() : base() { }
 
 		public SubParcelEncumbrance(SubParcel subParcel, int number, LandEncumbranceType landEncumbranceType, string name)
-			: base(number, landEncumbranceType, name)
-		{
+			: base(number, landEncumbranceType, name) =>
 			this.subParcel = subParcel;
-		}
 
 		private SubParcel subParcel;
 		public virtual SubParcel SubParcel =>
 			this.subParcel;
 
-		public override bool Equals(object obj)
-		{
-			if ((obj == null) || !(obj is SubParcelEncumbrance)) return false;
-			else return ((obj as SubParcelEncumbrance).subParcel == this.subParcel) && ((obj as SubParcelEncumbrance).number == this.number);
-		}
+		public override bool Equals(object obj) =>
+			obj is SubParcelEncumbrance other ?
+				this.subParcel == other.subParcel &&
+				this.number == other.number :
+				false;
 
-		public override int GetHashCode()
-		{
-			return this.subParcel.GetHashCode() ^ (int)this.number.GetHashCode();
-		}
+		public override int GetHashCode() =>
+			this.subParcel.GetHashCode() ^
+			this.number.GetHashCode();
 	}
 }

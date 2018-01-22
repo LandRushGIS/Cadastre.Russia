@@ -84,26 +84,21 @@ namespace LandRush.Cadastre.Russia
 			set => this.description = value;
 		}
 
-		public override bool Equals(object obj)
-		{
-			if ((obj == null) || !(obj is ParcelRight)) return false;
-			else return ((obj as ParcelRight).parcel == this.parcel) && ((obj as ParcelRight).number == this.number);
-		}
+		public override bool Equals(object obj) =>
+			obj is ParcelRight other ?
+				this.parcel == other.parcel &&
+				this.number == other.number :
+				false;
 
-		public override int GetHashCode()
-		{
-			return this.parcel.GetHashCode() ^ this.number.GetHashCode();
-		}
+		public override int GetHashCode() =>
+			this.parcel.GetHashCode() ^
+			this.number.GetHashCode();
 
-		public virtual int CompareTo(ParcelRight other)
-		{
-			return this.number.CompareTo(other.number);
-		}
+		public virtual int CompareTo(ParcelRight other) =>
+			this.number.CompareTo(other.number);
 
 		// !!
-		public override string ToString()
-		{
-			return this.name + " (" + this.landRightType.Description + ")";
-		}
+		public override string ToString() =>
+			$"{this.name} ({this.landRightType.Description})";
 	}
 }

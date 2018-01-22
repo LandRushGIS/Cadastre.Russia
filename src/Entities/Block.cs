@@ -71,20 +71,17 @@ namespace LandRush.Cadastre.Russia
 		////	}
 		////}
 
-		public override bool Equals(object obj)
-		{
-			if ((obj == null) || !(obj is Block)) return false;
-			else return ((obj as Block).district == this.district) && ((obj as Block).localNumber == this.localNumber);
-		}
+		public override bool Equals(object obj) =>
+			obj is Block other ?
+				this.district == other.district &&
+				this.localNumber == other.localNumber :
+				false;
 
-		public override int GetHashCode()
-		{
-			return this.district.GetHashCode() ^ (int)this.localNumber.GetHashCode();
-		}
+		public override int GetHashCode() =>
+			this.district.GetHashCode() ^
+			this.localNumber.GetHashCode();
 
-		public override string ToString()
-		{
-			return (this.name != null ? this.name : "<без имени>") + " (" + this.Number.ToString() + ")";
-		}
+		public override string ToString() =>
+			$"{this.name ?? "<без имени>"} ({this.Number})";
 	}
 }

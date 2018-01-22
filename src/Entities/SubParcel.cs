@@ -60,15 +60,14 @@ namespace LandRush.Cadastre.Russia
 			protected set => this.encumbrances = value;
 		}
 
-		public override bool Equals(object obj)
-		{
-			if ((obj == null) || !(obj is SubParcel)) return false;
-			else return ((obj as SubParcel).parcel == this.parcel) && ((obj as SubParcel).localNumber == this.localNumber);
-		}
+		public override bool Equals(object obj) =>
+			obj is SubParcel other ?
+				this.parcel == other.parcel &&
+				this.localNumber == other.localNumber :
+				false;
 
-		public override int GetHashCode()
-		{
-			return this.parcel.GetHashCode() ^ (int)this.localNumber.GetHashCode();
-		}
+		public override int GetHashCode() =>
+			this.parcel.GetHashCode() ^
+			this.localNumber.GetHashCode();
 	}
 }

@@ -21,16 +21,15 @@ namespace LandRush.Cadastre.Russia
 		public virtual int LocalNumber =>
 			this.localNumber;
 
-		public override bool Equals(object obj)
-		{
-			if ((obj == null) || !(obj is District)) return false;
-			else return ((obj as District).region == this.region) && ((obj as District).localNumber == this.localNumber);
-		}
+		public override bool Equals(object obj) =>
+			obj is District other ?
+				this.region == other.region &&
+				this.localNumber == other.localNumber :
+				false;
 
-		public override int GetHashCode()
-		{
-			return this.region.GetHashCode() ^ (int)this.localNumber;
-		}
+		public override int GetHashCode() =>
+			this.region.GetHashCode() ^
+			this.localNumber;
 
 		public virtual DistrictNumber Number =>
 			new DistrictNumber(this.region.Number, this.localNumber);
