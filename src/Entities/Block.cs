@@ -5,7 +5,12 @@ namespace LandRush.Cadastre.Russia
 	// Квартал
 	public class Block
 	{
-		protected Block() { }
+		private District district;
+		private int localNumber;
+		private string name;
+		private string note;
+		private double? documentedArea;
+		private IGeometry geometry;
 
 		public Block(District district, int localNumber)
 		{
@@ -13,8 +18,7 @@ namespace LandRush.Cadastre.Russia
 			this.localNumber = localNumber;
 		}
 
-		private District district;
-		private int localNumber;
+		protected Block() { }
 
 		public virtual District District =>
 			this.district;
@@ -26,7 +30,6 @@ namespace LandRush.Cadastre.Russia
 			new BlockNumber(this.district.Number, this.localNumber);
 
 		// Название
-		private string name;
 		public virtual string Name
 		{
 			get => this.name;
@@ -34,7 +37,6 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		// Заметка (Note)
-		private string note;
 		public virtual string Note
 		{
 			get => this.note;
@@ -42,7 +44,6 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		// Документированная площадь квартала
-		private double? documentedArea;
 		public virtual bool HasDocumentedArea =>
 			this.documentedArea.HasValue;
 
@@ -54,7 +55,6 @@ namespace LandRush.Cadastre.Russia
 
 		// Геометрия квартала
 		// TODO: use specific geometry type
-		private IGeometry geometry;
 		public virtual IGeometry Geometry
 		{
 			get => this.geometry;

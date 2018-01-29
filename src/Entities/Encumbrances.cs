@@ -7,13 +7,15 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public class LandEncumbranceType : DomainValue
 	{
-		protected LandEncumbranceType() { }
 		public LandEncumbranceType(string code, string description) : base(code, description) { }
+		protected LandEncumbranceType() { }
 	}
 
 	public class CadastralUnitEncumbrance : IComparable<CadastralUnitEncumbrance>
 	{
-		protected CadastralUnitEncumbrance() { }
+		protected int number;
+		private LandEncumbranceType landEncumbranceType;
+		private string name;
 
 		public CadastralUnitEncumbrance(int number, LandEncumbranceType landEncumbranceType, string name)
 		{
@@ -22,13 +24,11 @@ namespace LandRush.Cadastre.Russia
 			this.name = name;
 		}
 
-		protected int number;
+		protected CadastralUnitEncumbrance() { }
 
-		private LandEncumbranceType landEncumbranceType;
 		public virtual LandEncumbranceType LandEncumbranceType =>
 			this.landEncumbranceType;
 
-		private string name;
 		public virtual string Name =>
 			this.name;
 
@@ -45,13 +45,14 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public class ParcelEncumbrance : CadastralUnitEncumbrance
 	{
-		protected ParcelEncumbrance() : base() { }
+		private Parcel parcel;
 
 		public ParcelEncumbrance(Parcel parcel, int number, LandEncumbranceType landEncumbranceType, string name)
 			: base(number, landEncumbranceType, name) =>
 			this.parcel = parcel;
 
-		private Parcel parcel;
+		protected ParcelEncumbrance() : base() { }
+
 		public virtual Parcel Parcel =>
 			this.parcel;
 
@@ -71,13 +72,14 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public class SubParcelEncumbrance : CadastralUnitEncumbrance
 	{
-		protected SubParcelEncumbrance() : base() { }
+		private SubParcel subParcel;
 
 		public SubParcelEncumbrance(SubParcel subParcel, int number, LandEncumbranceType landEncumbranceType, string name)
 			: base(number, landEncumbranceType, name) =>
 			this.subParcel = subParcel;
 
-		private SubParcel subParcel;
+		protected SubParcelEncumbrance() : base() { }
+
 		public virtual SubParcel SubParcel =>
 			this.subParcel;
 

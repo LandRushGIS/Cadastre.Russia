@@ -8,7 +8,11 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public class SubParcel
 	{
-		protected SubParcel() { }
+		private Parcel parcel;
+		private int localNumber;
+		private ParcelState state;
+		private int? landPieceNumber;
+		private ISet<SubParcelEncumbrance> encumbrances;
 
 		public SubParcel(Parcel parcel, int localNumber, ParcelState state, ParcelLandPiece landPiece)
 		{
@@ -19,10 +23,10 @@ namespace LandRush.Cadastre.Russia
 			this.encumbrances = new HashSet<SubParcelEncumbrance>();
 		}
 
-		private Parcel parcel;
+		protected SubParcel() { }
+
 		public virtual Parcel Parcel => this.parcel;
 
-		private int localNumber;
 		public virtual int LocalNumber => this.localNumber;
 
 		public virtual SubParcelNumber Number =>
@@ -31,10 +35,7 @@ namespace LandRush.Cadastre.Russia
 		/// <summary>
 		/// Статус части земельного участка
 		/// </summary>
-		private ParcelState state;
 		public virtual ParcelState State => this.state;
-
-		private int? landPieceNumber;
 
 		public virtual ParcelLandPiece LandPiece
 		{
@@ -53,7 +54,6 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		// Ограничения (обременения) прав на часть земельного участка
-		private ISet<SubParcelEncumbrance> encumbrances;
 		public virtual ISet<SubParcelEncumbrance> Encumbrances
 		{
 			get => this.encumbrances;

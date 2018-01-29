@@ -10,8 +10,6 @@ namespace LandRush.Cadastre.Russia
 		private string firstName;
 		private string patronymic;
 
-		protected Person(): this(0, string.Empty, string.Empty, string.Empty) { }
-
 		public Person(int id, string familyName, string firstName, string patronymic)
 		{
 			this.id = id;
@@ -19,6 +17,8 @@ namespace LandRush.Cadastre.Russia
 			this.firstName = firstName;
 			this.patronymic = patronymic;
 		}
+
+		protected Person() : this(0, string.Empty, string.Empty, string.Empty) { }
 
 		/// <summary xml:lang="ru">
 		/// Внутренний идентификатор

@@ -7,8 +7,8 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public class LandRightType : DomainValue
 	{
-		protected LandRightType() { }
 		public LandRightType(string code, string description) : base(code, description) { }
+		protected LandRightType() { }
 	}
 
 	/// <summary>
@@ -25,8 +25,6 @@ namespace LandRush.Cadastre.Russia
 		private short shareDenominator;
 		private string shareText;
 		private string description;
-
-		protected ParcelRight() { }
 
 		public ParcelRight(
 			Parcel parcel,
@@ -45,6 +43,8 @@ namespace LandRush.Cadastre.Russia
 			this.shareNumerator = shareNumerator;
 			this.shareDenominator = shareDenominator;
 		}
+
+		protected ParcelRight() { }
 
 		public virtual Parcel Parcel => this.parcel;
 

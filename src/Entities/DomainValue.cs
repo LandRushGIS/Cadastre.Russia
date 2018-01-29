@@ -5,21 +5,23 @@ namespace LandRush.Cadastre.Russia
 	// !!!!
 	public class DomainValue : IComparable<DomainValue>
 	{
-		protected DomainValue() { }
+		private string code;
+		private string description;
+
 		public DomainValue(string code, string description) // !
 		{
 			this.code = code;
 			this.description = description;
 		}
 
-		private string code;
+		protected DomainValue() { }
+
 		public virtual string Code
 		{
 			get => this.code;
 			protected set => this.code = value;
 		}
 
-		private string description;
 		public virtual string Description
 		{
 			get => this.description;

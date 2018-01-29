@@ -14,8 +14,6 @@ namespace LandRush.Cadastre.Russia
 		private string issuer;
 		private Person person;
 
-		protected Passport() { }
-
 		public Passport(string series, string number, Person person)
 		{
 			if (!Regex.IsMatch(series, "^[0-9]{4}$"))
@@ -33,6 +31,8 @@ namespace LandRush.Cadastre.Russia
 			this.issuer = string.Empty;
 			this.person = person ?? throw new ArgumentNullException(nameof(person));
 		}
+
+		protected Passport() { }
 
 		/// <summary xml:lang="ru">
 		/// Серия

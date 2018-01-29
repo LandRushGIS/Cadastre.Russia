@@ -9,8 +9,8 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public class ParcelType : DomainValue
 	{
-		protected ParcelType() { }
 		public ParcelType(string code, string description) : base(code, description) { }
+		protected ParcelType() { }
 	}
 
 	/// <summary>
@@ -18,8 +18,8 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public class ParcelState : DomainValue
 	{
-		protected ParcelState() { }
 		public ParcelState(string code, string description) : base(code, description) { }
+		protected ParcelState() { }
 	}
 
 	/// <summary>
@@ -27,15 +27,28 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public /*abstract*/ class Parcel
 	{
+		private static IDictionary<Type, ParcelType> types;
+
 		static Parcel() =>
 			types = new Dictionary<Type, ParcelType>();
 
-		private static IDictionary<Type, ParcelType> types;
 		public static IDictionary<Type, ParcelType> Types =>
 			types;
 		//
 
-		protected Parcel() : this(null, 0, default(DateTime)) { }
+		protected IDictionary<int, ParcelLandPiece> numberedLandPieces;
+		private Block block;
+		private int localNumber;
+		private ParcelType type;
+		private ParcelState state;
+		private DateTime creationDate;
+		private DateTime? removingDate;
+		private LandCategory landCategory;
+		private LandUtilization landUtilization;
+		private double documentedArea;
+		private ISet<ParcelRight> rights;
+		private ISet<ParcelEncumbrance> encumbrances;
+		private IDictionary<int, SubParcel> numberedSubParcels;
 
 		public Parcel(Block block, int localNumber, DateTime creationDate)
 		{
@@ -50,11 +63,11 @@ namespace LandRush.Cadastre.Russia
 			this.numberedSubParcels = new Dictionary<int, SubParcel>();
 		}
 
-		private Block block;
+		protected Parcel() : this(null, 0, default(DateTime)) { }
+
 		public virtual Block Block =>
 			this.block;
 
-		private int localNumber;
 		public virtual int LocalNumber =>
 			this.localNumber;
 
@@ -67,12 +80,10 @@ namespace LandRush.Cadastre.Russia
 			this.Number;
 
 		// Тип участка
-		private ParcelType type;
 		public virtual ParcelType Type =>
 			this.type;
 
 		// Статус земельного участка
-		private ParcelState state;
 		public virtual ParcelState State
 		{
 			get => this.state;
@@ -80,12 +91,10 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		// Дата постановки участка на учет
-		private DateTime creationDate;
 		public virtual DateTime CreationDate =>
 			this.creationDate;
 
 		// Дата снятия участка с учета
-		private DateTime? removingDate;
 		public virtual bool HasRemovingDate =>
 			this.removingDate.HasValue;
 
@@ -96,7 +105,6 @@ namespace LandRush.Cadastre.Russia
 			this.removingDate.Value;
 
 		// Категория земель участка
-		private LandCategory landCategory;
 		public virtual LandCategory LandCategory
 		{
 			get => this.landCategory;
@@ -104,7 +112,6 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		// Разрешенное использование земель участка
-		private LandUtilization landUtilization;
 		public virtual LandUtilization LandUtilization
 		{
 			get => this.landUtilization;
@@ -112,7 +119,6 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		// Документированная площадь участка
-		private double documentedArea;
 		public virtual double DocumentedArea
 		{
 			get => this.documentedArea;
@@ -125,7 +131,6 @@ namespace LandRush.Cadastre.Russia
 			this.DocumentedArea * 10.0;//!!block.CadastralValueFactors[category];
 
 		// Права на земельный участок
-		private ISet<ParcelRight> rights;
 		public virtual ISet<ParcelRight> Rights
 		{
 			get => this.rights;
@@ -133,14 +138,11 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		// Ограничения (обременения) прав на земельный участок
-		private ISet<ParcelEncumbrance> encumbrances;
 		public virtual ISet<ParcelEncumbrance> Encumbrances
 		{
 			get => this.encumbrances;
 			protected set => this.encumbrances = value;
 		}
-
-		protected IDictionary<int, ParcelLandPiece> numberedLandPieces;
 
 		// !! Bad idea to publish this to interface
 		public virtual IDictionary<int, ParcelLandPiece> NumberedLandPieces =>
@@ -148,8 +150,6 @@ namespace LandRush.Cadastre.Russia
 
 		public virtual IEnumerable<ParcelLandPiece> LandPieces =>
 			this.numberedLandPieces.Values;
-
-		private IDictionary<int, SubParcel> numberedSubParcels;
 
 		public virtual IDictionary<int, SubParcel> NumberedSubParcels =>
 			this.numberedSubParcels;
@@ -170,9 +170,9 @@ namespace LandRush.Cadastre.Russia
 
 	public class SingleLandPieceParcel : Parcel
 	{
-		protected SingleLandPieceParcel() : this(null, 0, default(DateTime)) { }
-
 		public SingleLandPieceParcel(Block block, int localNumber, DateTime creationDate) : base(block, localNumber, creationDate) { }
+
+		protected SingleLandPieceParcel() : this(null, 0, default(DateTime)) { }
 
 		// Контур участка
 		public virtual ParcelLandPiece LandPiece
@@ -190,19 +190,21 @@ namespace LandRush.Cadastre.Russia
 
 	public class SimpleParcel : SingleLandPieceParcel
 	{
-		protected SimpleParcel() : this(null, 0, default(DateTime)) { }
-
 		public SimpleParcel(Block block, int localNumber, DateTime creationDate) : base(block, localNumber, creationDate) { }
+
+		protected SimpleParcel() : this(null, 0, default(DateTime)) { }
 	}
 
 	public class UnifiedLandUseChildParcel : SingleLandPieceParcel
 	{
-		protected UnifiedLandUseChildParcel() : this(null, 0, default(DateTime)) { }
+		private bool hasAnotherParentBlock;
+		private int parentParcelLocalNumber;
 
 		public UnifiedLandUseChildParcel(Block block, int localNumber, DateTime creationDate) : base(block, localNumber, creationDate) { }
 
+		protected UnifiedLandUseChildParcel() : this(null, 0, default(DateTime)) { }
+
 		// Является ли квартал родительского в едином землепользовании участка отличным от того, в котором находится данный участок
-		private bool hasAnotherParentBlock;
 		public virtual bool HasAnotherParentBlock
 		{
 			get => this.hasAnotherParentBlock;
@@ -210,7 +212,6 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		// Локальный номер родительского участка в едином землепользовании
-		private int parentParcelLocalNumber;
 		public virtual int ParentParcelLocalNumber
 		{
 			get => this.parentParcelLocalNumber;
@@ -226,20 +227,20 @@ namespace LandRush.Cadastre.Russia
 
 	public class UnifiedLandUseParcel : Parcel
 	{
-		protected UnifiedLandUseParcel() : this(null, 0, default(DateTime)) { }
-
 		public UnifiedLandUseParcel(Block block, int localNumber, DateTime creationDate) : base(block, localNumber, creationDate) { }
+
+		protected UnifiedLandUseParcel() : this(null, 0, default(DateTime)) { }
 	}
 
 	public class MulticontourParcel : Parcel
 	{
-		protected MulticontourParcel() : this(null, 0, default(DateTime)) { }
+		private IDictionary<int, MulticontourParcelContour> numberedContours;
 
 		public MulticontourParcel(Block block, int localNumber, DateTime creationDate)
 			: base(block, localNumber, creationDate) =>
 			this.numberedContours = new Dictionary<int, MulticontourParcelContour>();
 
-		private IDictionary<int, MulticontourParcelContour> numberedContours;
+		protected MulticontourParcel() : this(null, 0, default(DateTime)) { }
 
 		// Контуры участка
 		public virtual IDictionary<int, MulticontourParcelContour> NumberedContours =>
@@ -252,7 +253,8 @@ namespace LandRush.Cadastre.Russia
 	// Контур многоконтурного участка
 	public class MulticontourParcelContour
 	{
-		protected MulticontourParcelContour() { }
+		private MulticontourParcel parcel;
+		private int localNumber;
 
 		public MulticontourParcelContour(MulticontourParcel parcel, int localNumber)
 		{
@@ -260,11 +262,11 @@ namespace LandRush.Cadastre.Russia
 			this.localNumber = localNumber;
 		}
 
-		private MulticontourParcel parcel;
+		protected MulticontourParcelContour() { }
+
 		public virtual MulticontourParcel Parcel =>
 			this.parcel;
 
-		private int localNumber;
 		public virtual int LocalNumber =>
 			this.localNumber;
 

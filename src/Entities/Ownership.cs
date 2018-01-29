@@ -9,10 +9,10 @@ namespace LandRush.Cadastre.Russia
 	{
 		private int id;
 
-		protected Landholder() { }
-
 		public Landholder(int id) =>
 			this.id = id;
+
+		protected Landholder() { }
 
 		/// <summary xml:lang="ru">
 		/// Внутренний идентификатор
@@ -32,10 +32,10 @@ namespace LandRush.Cadastre.Russia
 	{
 		private Person person;
 
-		protected PersonLandholder() { }
-
 		public PersonLandholder(int id, Person person) : base(id) =>
 			this.person = person ?? throw new ArgumentNullException(nameof(person));
+
+		protected PersonLandholder() { }
 
 		public override string Name =>
 			$"{this.person.FamilyName} {this.person.FirstName} {this.person.Patronymic}";
@@ -50,10 +50,10 @@ namespace LandRush.Cadastre.Russia
 	{
 		private string name;
 
-		protected OrganizationLandholder() { }
-
 		public OrganizationLandholder(int id, string name) : base(id) =>
 			this.name = name ?? throw new ArgumentNullException(nameof(name));
+
+		protected OrganizationLandholder() { }
 
 		public override string Name =>
 			this.name;
@@ -64,7 +64,11 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public class ParcelRightsCertificate
 	{
-		protected ParcelRightsCertificate() { }
+		private string series;
+		private string number;
+		private DateTime date;
+		private string registrationRecordNumber;
+		private ParcelRight right;
 
 		public ParcelRightsCertificate(string series, string number, DateTime date, ParcelRight right, string registrationRecordNumber)
 		{
@@ -75,11 +79,7 @@ namespace LandRush.Cadastre.Russia
 			this.registrationRecordNumber = registrationRecordNumber;
 		}
 
-		private string series;
-		private string number;
-		private DateTime date;
-		private string registrationRecordNumber;
-		private ParcelRight right;
+		protected ParcelRightsCertificate() { }
 
 		public virtual string Series =>
 			this.series;

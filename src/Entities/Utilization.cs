@@ -5,8 +5,8 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public class LandUtilizationKind : DomainValue
 	{
-		protected LandUtilizationKind() { }
 		public LandUtilizationKind(string code, string description) : base(code, description) { }
+		protected LandUtilizationKind() { }
 	}
 
 	/// <summary>
@@ -15,14 +15,14 @@ namespace LandRush.Cadastre.Russia
 	// TODO: rename to ParcelLandUtilization, make reference type
 	public struct LandUtilization
 	{
+		private LandUtilizationKind kind;
+		private string description;
+
 		public LandUtilization(LandUtilizationKind kind, string description)
 		{
 			this.kind = kind;
 			this.description = description;
 		}
-
-		private LandUtilizationKind kind;
-		private string description;
 
 		/// <summary>
 		/// Вид использования земель

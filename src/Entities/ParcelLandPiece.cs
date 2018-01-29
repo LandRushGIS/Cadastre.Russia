@@ -8,7 +8,12 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public class ParcelLandPiece
 	{
-		protected ParcelLandPiece() : this(null, 0, null) { }
+		private Parcel parcel;
+		private int number;
+		private IGeometry geometry;
+		private string address;
+		private double? assessedValue;
+		private string note;
 
 		public ParcelLandPiece(Parcel parcel, int number, IGeometry geometry)
 		{
@@ -17,16 +22,15 @@ namespace LandRush.Cadastre.Russia
 			this.geometry = geometry;
 		}
 
-		private Parcel parcel;
+		protected ParcelLandPiece() : this(null, 0, null) { }
+
 		public virtual Parcel Parcel =>
 			this.parcel;
 
-		private int number;
 		public virtual int Number =>
 			this.number;
 
 		// Геометрия части земли
-		private IGeometry geometry;
 		public virtual IGeometry Geometry =>
 			this.geometry;
 
@@ -35,7 +39,6 @@ namespace LandRush.Cadastre.Russia
 			this.geometry.Area;
 
 		// Адрес
-		private string address;
 		public virtual string Address
 		{
 			get => this.address;
@@ -43,7 +46,6 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		// Оценочная стоимость
-		private double? assessedValue;
 		public virtual bool HasAssessedValue =>
 			this.assessedValue.HasValue;
 
@@ -57,7 +59,6 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		// Заметка (Note)
-		private string note;
 		public virtual string Note
 		{
 			get => this.note;

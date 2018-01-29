@@ -7,10 +7,10 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public struct RegionNumber : IComparable<RegionNumber>
 	{
+		public readonly int LocalNumber;
+
 		public RegionNumber(int localNumber) =>
 			this.LocalNumber = localNumber;
-
-		public readonly int LocalNumber;
 
 		public override string ToString() =>
 			this.LocalNumber.ToString("D2");
@@ -45,14 +45,14 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public struct DistrictNumber : IComparable<DistrictNumber>
 	{
+		public readonly RegionNumber regionNumber;
+		public readonly int localNumber;
+
 		public DistrictNumber(RegionNumber regionNumber, int localNumber)
 		{
 			this.regionNumber = regionNumber;
 			this.localNumber = localNumber;
 		}
-
-		public readonly RegionNumber regionNumber;
-		public readonly int localNumber;
 
 		public RegionNumber RegionNumber =>
 			this.regionNumber;
@@ -113,6 +113,9 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public struct BlockNumber : IComparable<BlockNumber>
 	{
+		public readonly DistrictNumber DistrictNumber;
+		public readonly int LocalNumber;
+
 		public BlockNumber(DistrictNumber districtNumber, int localNumber)
 		{
 			this.DistrictNumber = districtNumber;
@@ -121,9 +124,6 @@ namespace LandRush.Cadastre.Russia
 
 		public RegionNumber RegionNumber =>
 			this.DistrictNumber.RegionNumber;
-
-		public readonly DistrictNumber DistrictNumber;
-		public readonly int LocalNumber;
 
 		public override string ToString() =>
 			$"{this.DistrictNumber}:{this.LocalNumber:D7}";
@@ -178,6 +178,9 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public struct ParcelNumber : IComparable<ParcelNumber>, IComparable
 	{
+		public readonly BlockNumber BlockNumber;
+		public readonly int LocalNumber;
+
 		public ParcelNumber(BlockNumber blockNumber, int localNumber)
 		{
 			this.BlockNumber = blockNumber;
@@ -189,9 +192,6 @@ namespace LandRush.Cadastre.Russia
 
 		public DistrictNumber DistrictNumber =>
 			this.BlockNumber.DistrictNumber;
-
-		public readonly BlockNumber BlockNumber;
-		public readonly int LocalNumber;
 
 		public override string ToString() =>
 			$"{this.BlockNumber}:{this.LocalNumber}";
@@ -249,6 +249,9 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public struct ParcelContourNumber : IComparable<ParcelContourNumber>
 	{
+		public readonly ParcelNumber ParcelNumber;
+		public readonly int LocalNumber;
+
 		public ParcelContourNumber(ParcelNumber parcelNumber, int localNumber)
 		{
 			this.ParcelNumber = parcelNumber;
@@ -263,9 +266,6 @@ namespace LandRush.Cadastre.Russia
 
 		public BlockNumber BlockNumber =>
 			this.ParcelNumber.BlockNumber;
-
-		public readonly ParcelNumber ParcelNumber;
-		public readonly int LocalNumber;
 
 		public override string ToString() =>
 			$"{this.ParcelNumber} ({this.LocalNumber})";
@@ -318,6 +318,9 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public struct SubParcelNumber : IComparable<SubParcelNumber>
 	{
+		public readonly ParcelNumber ParcelNumber;
+		public readonly int LocalNumber;
+
 		public SubParcelNumber(ParcelNumber parcelNumber, int localNumber)
 		{
 			this.ParcelNumber = parcelNumber;
@@ -332,9 +335,6 @@ namespace LandRush.Cadastre.Russia
 
 		public BlockNumber BlockNumber =>
 			this.ParcelNumber.BlockNumber;
-
-		public readonly ParcelNumber ParcelNumber;
-		public readonly int LocalNumber;
 
 		public override string ToString() =>
 			$"{this.ParcelNumber}/{this.LocalNumber}";

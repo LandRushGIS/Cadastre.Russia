@@ -5,7 +5,8 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public class Region
 	{
-		protected Region() : this(0, "") { }
+		private int localNumber;
+		private string name;
 
 		public Region(int localNumber, string name)
 		{
@@ -13,13 +14,13 @@ namespace LandRush.Cadastre.Russia
 			this.name = name;
 		}
 
+		protected Region() : this(0, "") { }
+
 		public virtual RegionNumber Number =>
 			new RegionNumber(this.localNumber);
 
-		private int localNumber;
 		public virtual int LocalNumber => this.localNumber;
 
-		private string name;
 		public virtual string Name => this.name;
 	}
 }
