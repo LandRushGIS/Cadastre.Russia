@@ -77,7 +77,7 @@ namespace LandRush.Cadastre.Russia.Database.Migrations
 				from cadastre.landholder
 				where array_length(regexp_split_to_array(trim(name), E'\\s+'), 1) = 3
 			");
-			Execute.Sql($"select setval('cadastre.{seqName}', (select greatest(max(id) + 1, nextval('cadastre.{seqName}')) - 1 from cadastre.{name}))");
+			Execute.Sql($"select setval('cadastre.{seqName}', (select greatest(max(id) + 1, nextval('cadastre.{seqName}')) from cadastre.{name}))");
 		}
 
 		private void PopulateTablePersonLandholder()

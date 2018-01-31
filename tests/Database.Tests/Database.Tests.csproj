@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<!--<TargetFramework>netstandard1.4</TargetFramework>-->
+		<TargetFramework>net46</TargetFramework>
+		<RootNamespace>LandRush.Cadastre.Russia.Database.Tests</RootNamespace>
+		<AssemblyName>LandRush.Cadastre.Russia.Database.Tests</AssemblyName>
+		<Description>LandRush GIS Cadastre.Russia business component - database (tests)</Description>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="FluentMigrator" Version="1.6.2" />
+		<PackageReference Include="FluentMigrator.Runner" Version="1.6.2" />
+		<PackageReference Include="Npgsql" Version="3.2.6" />
+		<!--<PackageReference Include="System.Data.SQLite.Core" Version="1.0.107" />-->
+		<PackageReference Include="xunit" Version="2.3.1" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+		<ProjectReference Include="..\..\src\Database\Database.csproj" />
+	</ItemGroup>
+	<Import Project="..\..\common.props" />
+</Project>
