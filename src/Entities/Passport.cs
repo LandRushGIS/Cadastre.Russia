@@ -1,5 +1,5 @@
 using System;
-using System.Text.RegularExpressions;
+using Regex = System.Text.RegularExpressions.Regex;
 
 namespace LandRush.Cadastre.Russia
 {
@@ -11,24 +11,19 @@ namespace LandRush.Cadastre.Russia
 		private string series;
 		private string number;
 		private DateTime issueDate;
-		private string issuer;
+		private string authorityCode;
+		private string authorityName;
 		private Person person;
 
 		public Passport(string series, string number, Person person)
 		{
-			if (!Regex.IsMatch(series, "^[0-9]{4}$"))
-			{
-				throw new ArgumentException("Series must contain 4 digits", nameof(series));
-			}
-			if (!Regex.IsMatch(number, "^[0-9]{6}$"))
-			{
-				throw new ArgumentException("Number must contain 6 digits", nameof(number));
-			}
-
-			this.series = series;
-			this.number = number;
+			this.series = Regex.IsMatch(series, "^[0-9]{4}$")?
+				series : throw new ArgumentException("Series must contain 4 digits", nameof(series));
+			this.number = Regex.IsMatch(number, "^[0-9]{6}$")?
+				number : throw new ArgumentException("Number must contain 6 digits", nameof(number));
 			this.issueDate = DateTime.Now;
-			this.issuer = string.Empty;
+			this.authorityCode = null;
+			this.authorityName = string.Empty;
 			this.person = person ?? throw new ArgumentNullException(nameof(person));
 		}
 
@@ -54,12 +49,22 @@ namespace LandRush.Cadastre.Russia
 		}
 
 		/// <summary xml:lang="ru">
+		/// Код подразделения (без разделителя)
+		/// </summary>
+		public virtual string AuthorityCode
+		{
+			get => this.authorityCode;
+			set => this.authorityCode = IsAuthorityCodeValid(value)?
+				value : throw new ArgumentException("AuthorityCode must contain 6 digits", nameof(value));
+		}
+
+		/// <summary xml:lang="ru">
 		/// Выдавший орган
 		/// </summary>
-		public virtual string Issuer
+		public virtual string AuthorityName
 		{
-			get => this.issuer;
-			set => this.issuer = value;
+			get => this.authorityName;
+			set => this.authorityName = value;
 		}
 
 		/// <summary xml:lang="ru">
@@ -76,5 +81,8 @@ namespace LandRush.Cadastre.Russia
 		public override int GetHashCode() =>
 			this.series.GetHashCode() ^
 			this.number.GetHashCode();
+
+		private static bool IsAuthorityCodeValid(string authorityCode) =>
+			Regex.IsMatch(authorityCode, "^[0-9]{6}$");
 	}
 }

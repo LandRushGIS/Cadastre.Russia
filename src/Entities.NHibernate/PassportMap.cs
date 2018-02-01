@@ -18,7 +18,11 @@ namespace LandRush.Cadastre.Russia.NHibernate
 					m => m.Access.CamelCaseField());
 			Map(x => x.IssueDate)
 				.Access.CamelCaseField();
-			Map(x => x.Issuer)
+			Map(x => x.AuthorityCode)
+				.Access.CamelCaseField()
+				.Length(6)
+				.Nullable();
+			Map(x => x.AuthorityName)
 				.Access.CamelCaseField();
 			References(x => x.Person)
 				.Access.CamelCaseField()
