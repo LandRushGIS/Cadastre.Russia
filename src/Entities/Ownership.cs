@@ -48,15 +48,18 @@ namespace LandRush.Cadastre.Russia
 	/// </summary>
 	public class OrganizationLandholder : Landholder
 	{
-		private string name;
+		private Organization organization;
 
-		public OrganizationLandholder(int id, string name) : base(id) =>
-			this.name = name ?? throw new ArgumentNullException(nameof(name));
+		public OrganizationLandholder(int id, Organization organization) : base(id) =>
+			this.organization = organization ?? throw new ArgumentNullException(nameof(organization));
 
 		protected OrganizationLandholder() { }
 
 		public override string Name =>
-			this.name;
+			this.organization.Name;
+
+		public virtual Organization Organization =>
+			this.organization;
 	}
 
 	/// <summary>

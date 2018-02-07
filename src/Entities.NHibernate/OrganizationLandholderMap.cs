@@ -10,9 +10,9 @@ namespace LandRush.Cadastre.Russia.NHibernate
 			Table("organizationlandholder");
 
 			KeyColumn("id");
-			Map(x => x.Name)
+			References(x => x.Organization)
 				.Access.CamelCaseField()
-				.Length(500);
+				.Column("organizationid");
 		}
 	}
 }
