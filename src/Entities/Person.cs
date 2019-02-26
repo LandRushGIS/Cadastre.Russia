@@ -71,9 +71,9 @@ namespace LandRush.Cadastre.Russia
 		/// <summary xml:lang="ru">
 		/// Дата рождения
 		/// </summary>
-		public virtual DateTime BirthDate
+		public virtual DateTime? BirthDate
 		{
-			get => this.birthDate.Value;
+			get => this.birthDate;
 			set => this.birthDate = value;
 		}
 
@@ -86,9 +86,9 @@ namespace LandRush.Cadastre.Russia
 		/// <summary xml:lang="ru">
 		/// Дата смерти
 		/// </summary>
-		public virtual DateTime DeathDate
+		public virtual DateTime? DeathDate
 		{
-			get => this.deathDate.Value;
+			get => this.deathDate;
 			set => this.deathDate = value;
 		}
 
@@ -134,6 +134,6 @@ namespace LandRush.Cadastre.Russia
 
 		private static bool IsTINValid(string tin) =>
 			// TODO: add control sum checks
-			Regex.IsMatch(tin, "^[0-9]{12}$");
+			tin == null || Regex.IsMatch(tin, "^[0-9]{12}$");
 	}
 }

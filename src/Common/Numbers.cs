@@ -13,7 +13,7 @@ namespace LandRush.Cadastre.Russia
 			this.LocalNumber = localNumber;
 
 		public override string ToString() =>
-			this.LocalNumber.ToString("D2");
+			$"{this.LocalNumber:D2}";
 
 		public static bool operator ==(RegionNumber regionNumber1, RegionNumber regionNumber2) =>
 			regionNumber1.LocalNumber == regionNumber2.LocalNumber;

@@ -79,6 +79,6 @@ namespace LandRush.Cadastre.Russia
 
 		private static bool IsTINValid(string tin) =>
 			// TODO: add control sum checks
-			Regex.IsMatch(tin, "^[0-9]{10}$");
+			tin == null || Regex.IsMatch(tin, "^[0-9]{10}$");
 	}
 }

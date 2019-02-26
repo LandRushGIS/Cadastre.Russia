@@ -83,6 +83,6 @@ namespace LandRush.Cadastre.Russia
 			this.number.GetHashCode();
 
 		private static bool IsAuthorityCodeValid(string authorityCode) =>
-			Regex.IsMatch(authorityCode, "^[0-9]{6}$");
+			authorityCode == null || Regex.IsMatch(authorityCode, "^[0-9]{6}$");
 	}
 }
