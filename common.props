@@ -13,7 +13,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Version Condition=" '$(Version)' == '' ">0.1.0-pre</Version>
 		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		<Platform Condition=" '$(Platform)' == '' ">Any CPU</Platform>
 		<SignAssembly Condition="$(SignAssembly)==''">true</SignAssembly>
 		<AssemblyOriginatorKeyFile Condition="$(AssemblyOriginatorKeyFile) == ''">..\..\key.snk</AssemblyOriginatorKeyFile>
 		<DelaySign Condition="$(DelaySign) == ''">true</DelaySign>
